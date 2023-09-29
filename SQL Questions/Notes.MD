@@ -13,7 +13,8 @@ After selecting, you need to specify the table or tables from which you want to 
 
 ### WHERE (Optional)
 You can use the WHERE clause to specify conditions that filter the rows retrieved from the table. It is used to narrow down the results based on specific criteria.
-
+ - `ifnull` takes two parameters and checks if value is null. parameters: column, default value
+ 
 ### GROUP BY (Optional)
 If you want to group the results based on one or more columns, you can use the GROUP BY clause. This is often used with aggregate functions like COUNT, SUM, AVG, etc.
 
