@@ -24,3 +24,15 @@ The HAVING clause is used in conjunction with the GROUP BY clause to filter grou
 You can use the ORDER BY clause to sort the results in ascending (ASC) or descending (DESC) order based on one or more columns. 
 ### LIMIT (Optional)
 You can use the ORDER BY clause to sort the results in ascending (ASC) or descending (DESC) order based on one or more columns. 
+
+## Dates and Times
+### Format
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+YEAR - format YYYY or YY
+
+### Functions to Remember
+- DATEDIFF() returns number of days between two given dates
+- 
+
