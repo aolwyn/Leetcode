@@ -25,12 +25,18 @@ You can use the ORDER BY clause to sort the results in ascending (ASC) or descen
 ### LIMIT (Optional)
 You can use the ORDER BY clause to sort the results in ascending (ASC) or descending (DESC) order based on one or more columns. 
 
+## Common Aggregate Functions
+- `COUNT` counts how many rows are in a particular column.
+- `SUM` adds together all the values in a particular column.
+- `MIN` and `MAX` return the lowest and highest values in a particular column, respectively.
+- `AVG` calculates the average of a group of selected values.
+
 ## Dates and Times
 ### Format
-DATE - format YYYY-MM-DD
-DATETIME - format: YYYY-MM-DD HH:MI:SS
-TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
-YEAR - format YYYY or YY
+- DATE - format YYYY-MM-DD
+- DATETIME - format: YYYY-MM-DD HH:MI:SS
+- TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+- YEAR - format YYYY or YY
 
 ### Functions to Remember
 - DATEDIFF() returns number of days between two given dates
