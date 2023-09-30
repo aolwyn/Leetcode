@@ -48,5 +48,5 @@ You can use the ORDER BY clause to sort the results in ascending (ASC) or descen
 ## DELETE Queries
 The SQL `DELETE` statement is used to remove rows from a table in a database. It starts with the DELETE FROM clause followed by the name of the table from which you want to delete data. Optionally, you can include a WHERE clause to specify conditions that determine which rows should be deleted. Omitting the WHERE clause will result in the removal of all rows from the specified table. Before executing a DELETE query, it's important to understand the criteria and back up data if needed to prevent accidental data loss. Always exercise caution when using DELETE, especially in production environments.
 
-`DELETE FROM table_name
-WHERE condition`
+`DELETE FROM table_name`
+`WHERE condition`
