@@ -44,7 +44,7 @@ class Solution {
                     queue.add(current.left);
                 if(current.right != null)
                     queue.add(current.right);
-            }
+            }   
             result.add(sum/length);
         }
         return result;
