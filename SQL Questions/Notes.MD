@@ -40,6 +40,10 @@
 | not good for hierarchical data storage | good for hierarchical data storage |
 | Good for complex queries | not as good for complex queries |
 
+
+## Indexes
+Indexes in SQL are used to optimize the retrieval of data from a table. They work similar to book indexes, making data retrieval faster by providing a quick way to access specific rows based on the indexed column. Understanding how to create and use indexes is important for improving query performance.
+
 # Querying + Var Types
 ## How to comment
 use starred asterisks, i.e.,
@@ -48,6 +52,8 @@ use starred asterisks, i.e.,
 ## Standard Structure
 ### SELECT
 This is the first and most important part of an SQL query. It specifies which columns or expressions you want to retrieve from the database.
+
+- Can use `DISTINCT` to only get distinct values of x column. i..e, `DISTINCT(name)`
 
 ### FROM
 After selecting, you need to specify the table or tables from which you want to retrieve data. You can join multiple tables using JOIN operations if necessary.
@@ -91,3 +97,99 @@ The SQL `DELETE` statement is used to remove rows from a table in a database. It
 
 `DELETE FROM table_name`
 `WHERE condition`
+
+## INSERT Queries
+The SQL `INSERT` statement is used to add new rows of data to a table. It starts with the `INSERT INTO` clause followed by the name of the table where you want to insert data. You then specify the columns and provide the values you want to insert. If you omit column names, you should provide values for all columns in the same order as they appear in the table.
+
+`INSERT INTO table_name (column1, column2, column3, ...)`
+`VALUES (value1, value2, value3, ...);`
+
+## UPDATE Queries
+The SQL `UPDATE` statement is used to modify existing data in a table. It starts with the `UPDATE` clause followed by the name of the table you want to update. Then, you set the new values for specific columns, and you can use the WHERE clause to specify the rows that should be updated.
+
+`UPDATE table_name`
+`SET column1 = value1, column2 = value2, ...`
+`WHERE condition;`
+
+Certainly, let's provide information about SQL joins and their types using markdown format:
+
+## Joins in SQL
+Joins are a fundamental feature of SQL that enables you to combine data from multiple tables. They are essential when dealing with relational databases. There are several types of joins in SQL, each serving a specific purpose:
+
+### INNER JOIN
+An INNER JOIN returns only the rows where there is a match in both tables. It combines rows from two tables if there is a common value in the specified columns.
+
+**Syntax:**
+```sql
+SELECT column1, column2
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+**Example:**
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+INNER JOIN customers ON orders.customer_id = customers.customer_id;
+```
+
+### LEFT JOIN (or LEFT OUTER JOIN)
+A LEFT JOIN returns all the rows from the left table and the matched rows from the right table. If there are no matching rows in the right table, NULL values are included for those columns.
+
+**Syntax:**
+```sql
+SELECT column1, column2
+FROM table1
+LEFT JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+**Example:**
+```sql
+SELECT customers.customer_name, orders.order_id
+FROM customers
+LEFT JOIN orders ON customers.customer_id = orders.customer_id;
+```
+
+### RIGHT JOIN (or RIGHT OUTER JOIN)
+A RIGHT JOIN is similar to a LEFT JOIN but returns all the rows from the right table and the matched rows from the left table. If there are no matching rows in the left table, NULL values are included for those columns.
+
+**Syntax:**
+```sql
+SELECT column1, column2
+FROM table1
+RIGHT JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+**Example:**
+```sql
+SELECT orders.order_id, customers.customer_name
+FROM orders
+RIGHT JOIN customers ON orders.customer_id = customers.customer_id;
+```
+
+### FULL JOIN (or FULL OUTER JOIN)
+A FULL JOIN returns all the rows when there is a match in either the left or the right table. If there is no match, NULL values are included for those columns.
+
+**Syntax:**
+```sql
+SELECT column1, column2
+FROM table1
+FULL JOIN table2 ON table1.column_name = table2.column_name;
+```
+
+**Example:**
+```sql
+SELECT customers.customer_name, orders.order_id
+FROM customers
+FULL JOIN orders ON customers.customer_id = orders.customer_id;
+```
+
+### SELF JOIN
+A SELF JOIN is used to combine rows within the same table, as if you were joining the table with itself. This can be useful for hierarchical or recursive data.
+
+**Syntax:**
+```sql
+SELECT employee.name, manager.name
+FROM employees employee
+LEFT JOIN employees manager ON employee.manager_id = manager.employee_id;
+```
