@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 class Solution {
     public boolean isValid(String s) {
         //base cases, string is empty or null.

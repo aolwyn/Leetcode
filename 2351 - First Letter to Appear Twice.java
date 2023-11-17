@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 class Solution {
     public char repeatedCharacter(String s) {
         //we will use a hashmap to keep track of occurences.
