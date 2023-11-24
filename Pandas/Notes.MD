@@ -35,20 +35,6 @@ The basic order of data analysis typically follows a structured process to ensur
 10. **Model Evaluation:**
     - Assess the performance of the models using relevant metrics and validate their effectiveness in solving the defined problem.
 
-11. **Interpretation of Results:**
-    - Interpret the results in the context of the original problem or research question. Communicate findings clearly.
-
-12. **Iteration:**
-    - Iterate through the analysis process as needed. Refine models, revisit feature engineering, or adjust the problem definition based on initial findings.
-
-13. **Documentation:**
-    - Document the entire analysis process, including methodologies, decisions made, and key findings. This documentation is crucial for reproducibility and knowledge sharing.
-
-14. **Communication:**
-    - Present the results to relevant stakeholders through reports, visualizations, or presentations. Clearly articulate the implications and recommendations derived from the analysis.
-
-15. **Feedback and Improvement:**
-    - Gather feedback from stakeholders, incorporate insights, and continuously seek opportunities for improvement.
 
 ## Data Collection
 
@@ -78,21 +64,6 @@ df = pd.DataFrame(data)`
 columns = ['Column1', 'Column2']
 df = pd.DataFrame(data, columns=columns)`
 
-## Explore Data
-```python
-# Display the first few rows
-df.head()
-
-# Display last few rows
-df.tail()
-
-# Get basic information about the DataFrame
-df.info()
-
-# Summary statistics
-df.describe()
-```
-
 
 Data Cleaning, Selection, Filtering
 --------------------
@@ -106,7 +77,9 @@ Cleaning is a crucial step in data analysis. Pandas offers tools to handle missi
   - Use when a small percentage of data is missing, and removing rows or columns won't significantly impact analysis.
   - `df.dropna(axis=0, inplace=True)` for dropping rows.
   - `df.dropna(axis=1, inplace=True)` for dropping columns.
+  - `df.dropna(subset=['Value'], inplace=True)` for dropping based on column missing values.
   - `df.dropna() ` for both.
+
 
 - **Imputation using Mean, Median, or Mode:**
   - Suitable when missing values are missing completely at random (MCAR) or missing at random (MAR).
@@ -133,6 +106,8 @@ Cleaning is a crucial step in data analysis. Pandas offers tools to handle missi
  df.duplicated().sum() 
  df.drop_duplicates(inplace=True).
  ```
+ - of if you are looking to drop based on a specific column duplicate,
+ `df_no_duplicates = df.drop_duplicates(subset='ID', keep='first')`
 
 ### Correct Data Types
 - Ensure data types are appropriate for analysis.
@@ -159,8 +134,6 @@ Categorical data requires special attention during the data analysis process. It
 -------------------
 
 -   Assigning a unique numerical label to each category. This method is suitable when there is an ordinal relationship between the categories.
-
-
 
 `from sklearn.preprocessing import LabelEncoder
 
@@ -301,9 +274,9 @@ grouped_data = df.groupby('category')['value'].mean()
 grouped_data.head()
 ```
 
-### Filtering Data
+## Filtering Data
 
-## Filter rows based on a condition
+### Filter rows based on a condition
 ``` df[df['column'] > value] ```
 
 
@@ -357,9 +330,51 @@ recent_sales = sales_data.loc[sales_data.index > 100]
 
 
 
+## Data Visualization and Exploration 
+
+## Explore Data
+```python
+# Display the first few rows
+df.head()
+
+# Display last few rows
+df.tail()
+
+# Get basic information about the DataFrame
+df.info()
+
+# Summary statistics
+df.describe()
+```
+### Correlation Matrix
+
+A correlation matrix is a table showing correlation coefficients between variables. It helps identify relationships and patterns within a dataset.
+
+```python
+# Correlation Matrix
+correlation_matrix = df.corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title('Correlation Matrix')
+plt.show()
+```
+
+
 ## Data Visualization
 
-Visualize key aspects of the dataset to gain insights.
+### Scatter Plot
+
+```python
+
+# Scatter Plot
+plt.scatter(df['numerical_feature1'], df['numerical_feature2'])
+plt.xlabel('Numerical Feature 1')
+plt.ylabel('Numerical Feature 2')
+plt.title('Scatter Plot of Numerical Features')
+plt.show()
+```
+
+A scatter plot is useful for visualizing the relationship between two numerical variables.
 
 ### Histograms
 
@@ -471,3 +486,132 @@ fig.show()
 ```
 
 Treemaps display hierarchical data in a nested structure, making it easy to understand proportions within categories.
+
+### Kernel Density Estimation (KDE) Plot
+
+```python
+# KDE Plot
+sns.kdeplot(df['numerical_feature'], fill=True)
+plt.title('Kernel Density Estimation (KDE) Plot')
+plt.show()
+```
+
+A KDE plot represents the probability density function of a continuous random variable.
+
+## Feature Engineering
+
+### Relabel Existing Column
+```python
+# Original DataFrame
+print("Original DataFrame:")
+print(df)
+
+# Relabeling a Column
+df.rename(columns={'old_column_name': 'new_column_name'}, inplace=True)
+
+# Display the DataFrame after relabeling
+print("\nDataFrame after Relabeling:")
+print(df)
+```
+
+### Relabel Multiple Existing Columns from List
+```python 
+# Original DataFrame
+print("Original DataFrame:")
+print(df)
+
+# List of new column names
+new_column_names = ['new_col1', 'new_col2', 'new_col3', 'new_col4', 'new_col5']
+
+# Relabeling columns using the list of new names
+df.columns = new_column_names
+
+# Display the DataFrame after relabeling
+print("\nDataFrame after Relabeling:")
+print(df)
+```
+
+
+### 1. **Creation of New Features:**
+
+   - **Use Case:** Combining 'quantity' and 'price' to calculate the total cost of a product.
+
+   ```python
+
+   # Creating a new feature 'total_cost' by multiplying 'quantity' and 'price'
+
+   df['total_cost'] = df['quantity'] * df['price']
+
+   ```
+
+### 2. **Binning and Discretization:**
+
+   - **Use Case:** Converting 'age' into age groups for demographic analysis.
+
+   ```python
+
+   # Binning 'age' into categories ('young', 'middle-aged', 'senior')
+
+   bins = [0, 30, 40, 50, np.inf]
+
+   labels = ['Young', 'Middle-aged', 'Senior', 'Elderly']
+
+   df['age_category'] = pd.cut(df['age'], bins=bins, labels=labels)
+
+   ```
+
+### 3. **Log Transformations:**
+
+   - **Use Case:** Applying log transformation to 'income' for better model performance.
+
+   ```python
+
+   # Log-transform 'income' values
+
+   df['log_income'] = np.log1p(df['income'])
+
+   ```
+
+### 4. **Encoding Categorical Variables (One-Hot Encoding):**
+
+   - **Use Case:** Converting 'gender' into numerical representations for machine learning models.
+
+   ```python
+
+   # One-hot encoding for the 'gender' column
+
+   df_encoded = pd.get_dummies(df, columns=['gender'])
+
+   ```
+
+### 5. **Feature Scaling (Min-Max Scaling):**
+
+   - **Use Case:** Scaling 'height' and 'weight' to a common range for a BMI analysis.
+
+   ```python
+
+   # Min-max scaling 'height' and 'weight'
+
+   from sklearn.preprocessing import MinMaxScaler
+
+   scaler = MinMaxScaler()
+
+   df[['scaled_height', 'scaled_weight']] = scaler.fit_transform(df[['height', 'weight']])
+
+   ```
+
+### 6. **Time-Based Features:**
+
+   - **Use Case:** Extracting 'month' and 'day' from 'transaction_date' for time-series analysis.
+
+   ```python
+
+   # Extracting 'month' and 'day' from 'transaction_date'
+
+   df['transaction_date'] = pd.to_datetime(df['transaction_date'])
+
+   df['transaction_month'] = df['transaction_date'].dt.month
+
+   df['transaction_day'] = df['transaction_date'].dt.day
+
+   ```
