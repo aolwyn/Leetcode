@@ -20,7 +20,7 @@ Problem Number: 0
 
 - A *Linked List* is a linear collection of data elements, called nodes, each pointing to the next node by means of a pointer. It is a data structure consisting of a group of nodes which together represent a sequence.
 - **Singly-linked list**: linked list in which each node points to the next node and the last node points to null
-- **Doubly-linked list**: linked list in which each node has two pointers, p and n, such that p points to the previous node and n points to the next node; the last node's n pointer points to null
+- **Doubly-linked list**: linked list in which each node has two pointers, p, and n, such that p points to the previous node and n points to the next node; the last node's n pointer points to null
 - **Circular-linked list**: linked list in which each node points to the next node and the last node points back to the first node
 - Time Complexity:
     - Access: `O(n)`
@@ -66,12 +66,12 @@ Problem Number: 0
 
 - A *Binary Tree* is a tree data structure in which each node has at most two children, which are referred to as the *left child* and *right child*
 - **Full Tree**: a tree in which every node has either 0 or 2 children
-- **Perfect Binary Tree**: a binary tree in which all interior nodes have two children and all leave have the same depth
+- **Perfect Binary Tree**: a binary tree in which all interior nodes have two children and all leaves have the same depth
 - **Complete Tree**: a binary tree in which every level *except possibly the last* is full and all nodes in the last level are as far left as possible
 
 ### Binary Search Tree
 
-- A binary search tree, sometimes called BST, is a type of binary tree which maintains the property that the value in each node must be greater than or equal to any value stored in the left sub-tree, and less than or equal to any value stored in the right sub-tree
+- A binary search tree, sometimes called BST, is a type of binary tree that maintains the property that the value in each node must be greater than or equal to any value stored in the left sub-tree, and less than or equal to any value stored in the right sub-tree
 - Time Complexity:
     - Access: `O(log(n))`
     - Search: `O(log(n))`
@@ -106,7 +106,7 @@ Problem Number: 0
 
 ### Heap
 
-- A *Heap* is a specialized tree based structure data structure that satisfies the *heap* property: if A is a parent node of B, then the key (the value) of node A is ordered with respect to the key of node B with the same ordering applying across the entire heap. A heap can be classified further as either a "max heap" or a "min heap". In a max heap, the keys of parent nodes are always greater than or equal to those of the children and the highest key is in the root node. In a min heap, the keys of parent nodes are less than or equal to those of the children and the lowest key is in the root node
+- A *Heap* is a specialized tree-based structure data structure that satisfies the *heap* property: if A is a parent node of B, then the key (the value) of node A is ordered with respect to the key of node B with the same ordering applying across the entire heap. A heap can be classified further as either a "max heap" or a "min heap". In a max heap, the keys of parent nodes are always greater than or equal to those of the children and the highest key is in the root node. In a min heap, the keys of parent nodes are less than or equal to those of the children and the lowest key is in the root node
 - Time Complexity:
     - Access Max / Min: `O(1)`
     - Insert: `O(log(n))`
@@ -136,7 +136,7 @@ Problem Number: 0
 
 ### Mergesort
 
-- *Mergesort* is also a divide and conquer algorithm. It continuously divides an array into two halves, recurses on both the left subarray and right subarray and then merges the two sorted halves
+- *Mergesort* is also a divide-and-conquer algorithm. It continuously divides an array into two halves, recurses on both the left subarray and right subarray and then merges the two sorted halves
 - Stable: `Yes`
 - Time Complexity:
     - Best Case: `O(nlog(n))`
@@ -147,7 +147,7 @@ Problem Number: 0
 
 ### Bucket Sort
 
-- *Bucket Sort* is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm, or by recursively applying the bucket sorting algorithm
+- *Bucket Sort* is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by recursively applying the bucket sorting algorithm
 - Time Complexity:
     - Best Case: `Ω(n + k)`
     - Worst Case: `O(n^2)`
@@ -167,14 +167,14 @@ Problem Number: 0
 
 ### Depth First Search
 
-- *Depth First Search* is a graph traversal algorithm which explores as far as possible along each branch before backtracking
+- *Depth First Search* is a graph traversal algorithm that explores as far as possible along each branch before backtracking
 - Time Complexity: `O(|V| + |E|)`
 
 ![https://github.com/kdn251/interviews/raw/master/images/dfsbfs.gif?raw=true](https://github.com/kdn251/interviews/raw/master/images/dfsbfs.gif?raw=true)
 
 ### Breadth First Search
 
-- *Breadth First Search* is a graph traversal algorithm which explores the neighbor nodes first, before moving to the next level neighbors
+- *Breadth First Search* is a graph traversal algorithm that explores the neighbor nodes first, before moving to the next level neighbors
 - Time Complexity: `O(|V| + |E|)`
 
 ![https://github.com/kdn251/interviews/raw/master/images/dfsbfs.gif?raw=true](https://github.com/kdn251/interviews/raw/master/images/dfsbfs.gif?raw=true)
