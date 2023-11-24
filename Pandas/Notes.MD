@@ -38,8 +38,6 @@ The basic order of data analysis typically follows a structured process to ensur
 
 ## Data Collection
 
-Data Collection
----------------
 
 ## Import Libraries
 ```python
@@ -311,7 +309,8 @@ Sorting data is crucial for better understanding and analysis.
 
         `sorted_customers = df.sort_values(by='customer_name')`
 
-
+-   Sort by Asc, Desc:
+`df_sorted_asc = df.sort_values(by='Column1', ascending=True)` and `df_sorted_asc = df.sort_values(by='Column1', ascending=False)`
 
 ## Filtering Data
 
@@ -366,7 +365,6 @@ targeted_data = sales_data.loc[(sales_data['Quantity'] > 50) & (sales_data['Prod
 ```python
 recent_sales = sales_data.loc[sales_data.index > 100]
 ```
-
 
 
 ## Data Visualization and Exploration 
@@ -718,3 +716,105 @@ Transforming data between long and wide formats provides flexibility in data rep
     -   Converting a long-format time-series dataset to a wide-format for comparison.
 
         `df_wide_format = df_long.set_index(['date', 'category']).unstack('category')`
+
+
+## Statistical Analysis
+
+### 1. **Summary Statistics:**
+
+   - `df.describe()` - Generate descriptive statistics for numerical columns.
+
+### 2. **Correlation:**
+
+   - `df.corr()` - Compute pairwise correlation of columns.
+
+### 3. **Quantiles and Percentiles:**
+
+   - `df['column'].quantile(q)` - Calculate specific quantiles or percentiles.
+
+### 4. **Skewness and Kurtosis:**
+
+   - `df['column'].skew()` - Measure the asymmetry of the data.
+
+   - `df['column'].kurt()` - Measure the tail-heaviness of the distribution.
+
+## Aggregation and Grouping
+
+### 5. **GroupBy:**
+
+   - `df.groupby('column').agg({'numeric_col': 'mean', 'other_col': 'max'})` - Group data and apply custom aggregations.
+
+### 6. **GroupBy with Multiple Columns:**
+
+   - `df.groupby(['col1', 'col2']).agg({'numeric_col': 'mean'})` - Group data by multiple columns.
+
+### 7. **Custom Aggregations:**
+
+   - `df.groupby('column').agg({'numeric_col': ['mean', 'sum'], 'other_col': 'max'})` - Apply multiple custom aggregations.
+
+## Hypothesis Testing
+
+### 8. **T-Test:**
+
+   - `from scipy.stats import ttest_ind` - Compare means of two independent samples.
+
+   - `ttest_ind(sample1, sample2)`
+
+### 9. **ANOVA:**
+
+   - `from scipy.stats import f_oneway` - Compare means of multiple groups.
+
+   - `f_oneway(group1, group2, group3)`
+
+### 10. **Chi-Square Test:**
+
+   - `from scipy.stats import chi2_contingency` - Assess association between categorical variables.
+
+   - `chi2_contingency(observed_table)`
+
+### 11. **Paired T-Test:**
+
+   - `from scipy.stats import ttest_rel` - Compare means of paired samples.
+
+   - `ttest_rel(before_treatment, after_treatment)`
+
+## Data Distribution
+
+### 12. **Histogram:**
+
+   - `df['numeric_col'].hist()` - Visualize the distribution of a numerical variable.
+
+### 13. **Box Plot:**
+
+   - `df.boxplot(column='numeric_col')` - Visualize summary statistics of a numerical variable.
+
+### 14. **Kernel Density Estimation (KDE):**
+
+   - `df['numeric_col'].plot.kde()` - Visualize the probability density function.
+
+### 15. **Shapiro-Wilk Test:**
+
+   - `from scipy.stats import shapiro` - Check for normality in a sample.
+
+   - `shapiro(df['numeric_col'])`
+
+## Time Series Analysis
+
+### 16. **Resampling:**
+
+   - `df.resample('D').sum()` - Resample time series data.
+
+### 17. **Rolling Mean:**
+
+    - `df['numeric_col'].rolling(window=3).mean()` - Compute rolling mean.
+
+### 18. **Autocorrelation:**
+
+   - `df['numeric_col'].autocorr(lag=1)` - Measure autocorrelation.
+
+### 19. **Exponential Moving Average:**
+
+   - `df['ema'] = df['numeric_col'].ewm(span=7, adjust=False).mean()` - Compute exponential moving average.
+
+
+# For models, 
