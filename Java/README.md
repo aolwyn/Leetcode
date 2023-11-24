@@ -1,7 +1,5 @@
 # NOTES!
 
-: notes
- : No
 Problem Number: 0
 
 # General Notes
