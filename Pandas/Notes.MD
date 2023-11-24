@@ -10,10 +10,21 @@ import numpy as np
 ```
 
 ## Load Data
+
+### from CSV
 ```
 url = "https://example.com/data.csv"
 df = pd.read_csv(url)
 ```
+
+### From a Dictionary
+`data = {'Column1': [1, 2, 3], 'Column2': ['A', 'B', 'C']}
+df = pd.DataFrame(data)`
+
+### From a List of Lists
+`data = [[1, 'A'], [2, 'B'], [3, 'C']]
+columns = ['Column1', 'Column2']
+df = pd.DataFrame(data, columns=columns)`
 
 ## Explore Data
 ```
