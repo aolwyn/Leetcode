@@ -163,9 +163,9 @@ Categorical data requires special attention during the data analysis process. It
 
 `from sklearn.preprocessing import LabelEncoder
 
-# Example: Label encoding for a 'gender' column
-le = LabelEncoder()
-df['gender_encoded'] = le.fit_transform(df['gender'])`
+Example: Label encoding for a 'gender' column
+```le = LabelEncoder()
+df['gender_encoded'] = le.fit_transform(df['gender'])```
 
 Keep in mind that label encoding might imply an ordinal relationship that may not exist in the original data.
 
@@ -175,7 +175,7 @@ Keep in mind that label encoding might imply an ordinal relationship that may no
 -   Creating binary columns for each category (dummy variables). This is suitable when there is no inherent order among the categories.
 
 
-`# Example: One-hot encoding for a 'color' column
+` Example: One-hot encoding for a 'color' column
 df_encoded = pd.get_dummies(df, columns=['color'])`
 
 One-hot encoding prevents the model from assuming false ordinal relationships between categories.
@@ -186,7 +186,7 @@ One-hot encoding prevents the model from assuming false ordinal relationships be
 -   Explicitly specifying the order of categories. This is useful when there is a clear ordinal relationship, and label encoding might not capture it.
 
 
-`# Example: Ordinal encoding for an 'education' column
+` Example: Ordinal encoding for an 'education' column
 education_order = ['High School', 'Associate', 'Bachelor', 'Master', 'PhD']
 df['education_encoded'] = df['education'].astype('category', ordered=True, categories=education_order).cat.codes`
 
@@ -198,7 +198,7 @@ Ensure that the order specified aligns with the actual ordinal nature of the dat
 -   Encoding categories based on their frequency in the dataset. This can be useful when the frequency of occurrence is meaningful.
 
 
-`# Example: Frequency encoding for a 'city' column
+` Example: Frequency encoding for a 'city' column
 frequency_map = df['city'].value_counts().to_dict()
 df['city_encoded'] = df['city'].map(frequency_map)`
 
@@ -210,7 +210,7 @@ Frequency encoding can be particularly effective for high-cardinality categorica
 -   Encoding categories based on the mean of the target variable for each category. This is useful for binary classification problems.
 
 
-`# Example: Target encoding for a binary classification problem
+` Example: Target encoding for a binary classification problem
 target_mean = df.groupby('category')['target'].mean()
 df['category_encoded'] = df['category'].map(target_mean)`
 
@@ -220,7 +220,6 @@ Be cautious with target encoding to avoid leakage or overfitting. It's often rec
 -----------------------------------------
 
 -   In the context of neural networks, embedding layers can be used to learn the representation of categorical variables.
-
 
 `from keras.models import Sequential
 from keras.layers import Embedding
@@ -236,7 +235,7 @@ This is common in natural language processing tasks but can be adapted for other
 -   Representing categories as binary codes. This reduces dimensionality compared to one-hot encoding.
 
 
-`# Example: Binary encoding using the category_encoders library
+` Example: Binary encoding using the category_encoders library
 import category_encoders as ce
 
 encoder = ce.BinaryEncoder(cols=['country'])
@@ -250,7 +249,7 @@ Binary encoding is efficient and suitable for high-cardinality categorical featu
 -   Hashing the categories into a fixed number of bins. This is useful when dealing with a large number of unique categories.
 
 
-`# Example: Hashing encoding using the category_encoders library
+` Example: Hashing encoding using the category_encoders library
 encoder = ce.HashingEncoder(cols=['city'], n_components=8)
 df_hash_encoded = encoder.fit_transform(df)`
 
