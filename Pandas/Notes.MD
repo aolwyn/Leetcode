@@ -56,41 +56,43 @@ first_x_rows = df.iloc[:x, :]
 ```
 
 ### Filtering Data
+
+## Filter rows based on a condition
+``` df[df['column'] > value] ```
+
+
+### Let's assume we have a DataFrame 'sales_data' with columns 'Product', 'Quantity', and 'Revenue'.
+
+### 1. Filtering products with quantity greater than 100
+```high_quantity_products = sales_data[sales_data['Quantity'] > 100] ```
+
+### 2. Selecting rows where revenue is above a certain threshold
+```high_revenue_products = sales_data[sales_data['Revenue'] > 5000]```
+
+### 3. Filtering data for a specific product
+```product_data = sales_data[sales_data['Product'] == 'Product_A']```
+
+### 4. Selecting rows based on multiple conditions
+```special_sales = sales_data[(sales_data['Quantity'] > 50) & (sales_data['Revenue'] > 2000)]```
+
+### 5. Filtering data for specific products using the 'isin' method
+```selected_products = sales_data[sales_data['Product'].isin(['Product_A', 'Product_B'])]```
+
+### 6. Filtering data based on a string pattern (e.g., products containing 'Widget')
+```widget_products = sales_data[sales_data['Product'].str.contains('Widget')] ```
+
+### 7. Selecting rows with null or non-null values in a specific column
 ```
-# Filter rows based on a condition
-df[df['column'] > value]
-
-
-# Let's assume we have a DataFrame 'sales_data' with columns 'Product', 'Quantity', and 'Revenue'.
-
-# 1. Filtering products with quantity greater than 100
-high_quantity_products = sales_data[sales_data['Quantity'] > 100]
-
-# 2. Selecting rows where revenue is above a certain threshold
-high_revenue_products = sales_data[sales_data['Revenue'] > 5000]
-
-# 3. Filtering data for a specific product
-product_data = sales_data[sales_data['Product'] == 'Product_A']
-
-# 4. Selecting rows based on multiple conditions
-special_sales = sales_data[(sales_data['Quantity'] > 50) & (sales_data['Revenue'] > 2000)]
-
-# 5. Filtering data for specific products using the 'isin' method
-selected_products = sales_data[sales_data['Product'].isin(['Product_A', 'Product_B'])]
-
-# 6. Filtering data based on a string pattern (e.g., products containing 'Widget')
-widget_products = sales_data[sales_data['Product'].str.contains('Widget')]
-
-# 7. Selecting rows with null or non-null values in a specific column
 missing_data = sales_data[sales_data['Revenue'].isnull()]
 valid_data = sales_data[sales_data['Revenue'].notnull()]
+ ```
 
-# 8. Using the loc method for more complex conditions and selecting specific columns
-targeted_data = sales_data.loc[(sales_data['Quantity'] > 50) & (sales_data['Product'] == 'Special_Product'), ['Product', 'Revenue']]
+### 8. Using the loc method for more complex conditions and selecting specific columns
+```targeted_data = sales_data.loc[(sales_data['Quantity'] > 50) & (sales_data['Product'] == 'Special_Product'), ['Product', 'Revenue']]```
 
-# 9. Filtering based on index (e.g., selecting rows after the 100th index)
-recent_sales = sales_data.loc[sales_data.index > 100]
-```
+### 9. Filtering based on index (e.g., selecting rows after the 100th index)
+```recent_sales = sales_data.loc[sales_data.index > 100]```
+
 
 ## Data Cleaning
 Cleaning is a crucial step in data analysis. Pandas offers tools to handle missing values and other data cleaning tasks.
