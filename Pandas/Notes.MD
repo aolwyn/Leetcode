@@ -12,7 +12,7 @@ import numpy as np
 ## Load Data
 
 ### from CSV
-```
+```python
 url = "https://example.com/data.csv"
 df = pd.read_csv(url)
 ```
@@ -27,9 +27,12 @@ columns = ['Column1', 'Column2']
 df = pd.DataFrame(data, columns=columns)`
 
 ## Explore Data
-```
+```python
 # Display the first few rows
 df.head()
+
+# Display last few rows
+df.tail()
 
 # Get basic information about the DataFrame
 df.info()
@@ -41,7 +44,7 @@ df.describe()
 ## Data Selection
 
 ### Selecting Columns
-```
+```python
 # Select a single column
 df['column_name']
 
@@ -54,7 +57,7 @@ first_x_columns = df.iloc[:, :x]
 ```
 
 ### Selecting Rows
-```
+```python
 # Select row by integer index
 df.iloc[index]
 
@@ -93,7 +96,7 @@ first_x_rows = df.iloc[:x, :]
 ```widget_products = sales_data[sales_data['Product'].str.contains('Widget')] ```
 
 ### 7. Selecting rows with null or non-null values in a specific column
-```
+```python
 missing_data = sales_data[sales_data['Revenue'].isnull()]
 valid_data = sales_data[sales_data['Revenue'].notnull()]
  ```
@@ -114,6 +117,7 @@ Cleaning is a crucial step in data analysis. Pandas offers tools to handle missi
   - Use when a small percentage of data is missing, and removing rows or columns won't significantly impact analysis.
   - `df.dropna(axis=0, inplace=True)` for dropping rows.
   - `df.dropna(axis=1, inplace=True)` for dropping columns.
+  - `df.dropna() ` for both.
 
 - **Imputation using Mean, Median, or Mode:**
   - Suitable when missing values are missing completely at random (MCAR) or missing at random (MAR).
@@ -134,3 +138,120 @@ Cleaning is a crucial step in data analysis. Pandas offers tools to handle missi
   - When you want to replace missing values with a predefined constant.
   - `df['column_name'].fillna(value, inplace=True)` for filling with a specific value.
 
+## Data Visualization
+
+Data Visualization
+------------------
+
+Visualize key aspects of the dataset to gain insights.
+
+### Histograms
+
+```python
+# Plot histograms for numeric columns
+df.hist(figsize=(10, 8))
+plt.show()
+```
+
+Histograms provide a visual representation of the distribution of a dataset, showing the frequency of values within different bins.
+
+### Pair Plots
+
+```python
+# Create pair plot
+sns.pairplot(df, hue='category', diag_kind='kde')
+plt.show()
+```
+
+Pair plots display pairwise relationships between variables, making it easy to identify patterns and correlations.
+
+### Box Plots
+
+```python
+# Box plot
+plt.figure(figsize=(12, 8))
+sns.boxplot(x='category', y='value', data=df)
+plt.show()
+```
+
+Box plots help in understanding the distribution of a variable and identifying outliers.
+
+### Violin Plots
+
+```python
+# Violin plot
+plt.figure(figsize=(12, 8))
+sns.violinplot(x='category', y='value', data=df)
+plt.show()
+```
+
+Violin plots combine aspects of box plots and kernel density plots, providing a comprehensive view of the data distribution.
+
+### 3D Plots
+
+```python
+# 3D Scatter plot
+fig = plt.figure(figsize=(12, 10))
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(df['feature1'], df['feature2'], df['feature3'], c=df['value'], cmap='viridis')
+ax.set_xlabel('Feature 1')
+ax.set_ylabel('Feature 2')
+ax.set_zlabel('Feature 3')
+plt.show()
+```
+
+3D plots are useful for visualizing relationships in datasets with three or more dimensions.
+
+### Radar Charts
+
+```python
+# Radar chart
+categories = df.columns[1:]
+values = df.iloc[0].drop('category').values.flatten().tolist()
+
+fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(polar=True))
+ax.fill_between(np.arange(len(categories)), values, alpha=0.25)
+ax.set_thetagrids(np.arange(len(categories)) * 360 / float(len(categories)), labels=categories)
+plt.show()
+```
+
+Radar charts are effective for comparing multivariate data across different categories.
+
+### Animated Plots
+
+```python
+# Animated line plot
+fig, ax = plt.subplots(figsize=(10, 6))
+
+def update(frame):
+    data = df[df['frame'] == frame]
+    ax.clear()
+    ax.plot(data['date'], data['value'])
+    plt.title(f'Time Series - Frame {frame}')
+
+ani = animation.FuncAnimation(fig, update, frames=df['frame'].unique(), repeat=False)
+plt.show()
+```
+
+Animated plots provide a dynamic view of changes over time in time-series or sequential data.
+
+### Geographic Plots
+
+```python
+# Geographic plot with Plotly
+fig = px.scatter_geo(df, lat='latitude', lon='longitude', color='value', size='value',
+                     projection='natural earth', title='Geographic Plot')
+fig.show()
+```
+
+Geographic plots visualize data on a map, providing insights into spatial distributions.
+
+### Treemaps
+
+```python
+# Treemap with Plotly
+fig = px.treemap(df, path=['category', 'sub_category'], values='value', title='Treemap')
+fig.show()
+```
+
+Treemaps display hierarchical data in a nested structure, making it easy to understand proportions within categories.
