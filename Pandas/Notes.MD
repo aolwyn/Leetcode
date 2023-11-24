@@ -69,6 +69,22 @@ x = 10  # Replace with the desired number of rows
 first_x_rows = df.iloc[:x, :]
 ```
 
+### Select rows and columns based on a comparison
+```python
+# Select rows and columns using loc (label-based)
+selected_data = df.loc[df['category'] == 'A', ['value', 'feature1']] 
+```
+
+### Groupby and Aggregation
+
+```python
+# Group by 'category' and calculate the mean of 'value'
+grouped_data = df.groupby('category')['value'].mean()
+
+# Display the aggregated data
+grouped_data.head()
+```
+
 ### Filtering Data
 
 ## Filter rows based on a condition
@@ -78,22 +94,34 @@ first_x_rows = df.iloc[:x, :]
 ### Let's assume we have a DataFrame 'sales_data' with columns 'Product', 'Quantity', and 'Revenue'.
 
 ### 1. Filtering products with quantity greater than 100
-```high_quantity_products = sales_data[sales_data['Quantity'] > 100] ```
+``` python
+high_quantity_products = sales_data[sales_data['Quantity'] > 100] 
+```
 
 ### 2. Selecting rows where revenue is above a certain threshold
-```high_revenue_products = sales_data[sales_data['Revenue'] > 5000]```
+```python
+high_revenue_products = sales_data[sales_data['Revenue'] > 5000]
+```
 
 ### 3. Filtering data for a specific product
-```product_data = sales_data[sales_data['Product'] == 'Product_A']```
+```python
+product_data = sales_data[sales_data['Product'] == 'Product_A']
+```
 
 ### 4. Selecting rows based on multiple conditions
-```special_sales = sales_data[(sales_data['Quantity'] > 50) & (sales_data['Revenue'] > 2000)]```
+```python
+special_sales = sales_data[(sales_data['Quantity'] > 50) & (sales_data['Revenue'] > 2000)]
+```
 
 ### 5. Filtering data for specific products using the 'isin' method
-```selected_products = sales_data[sales_data['Product'].isin(['Product_A', 'Product_B'])]```
+```python
+selected_products = sales_data[sales_data['Product'].isin(['Product_A', 'Product_B'])]
+```
 
 ### 6. Filtering data based on a string pattern (e.g., products containing 'Widget')
-```widget_products = sales_data[sales_data['Product'].str.contains('Widget')] ```
+```python
+widget_products = sales_data[sales_data['Product'].str.contains('Widget')] 
+```
 
 ### 7. Selecting rows with null or non-null values in a specific column
 ```python
@@ -102,10 +130,14 @@ valid_data = sales_data[sales_data['Revenue'].notnull()]
  ```
 
 ### 8. Using the loc method for more complex conditions and selecting specific columns
-```targeted_data = sales_data.loc[(sales_data['Quantity'] > 50) & (sales_data['Product'] == 'Special_Product'), ['Product', 'Revenue']]```
+```python
+targeted_data = sales_data.loc[(sales_data['Quantity'] > 50) & (sales_data['Product'] == 'Special_Product'), ['Product', 'Revenue']]
+```
 
 ### 9. Filtering based on index (e.g., selecting rows after the 100th index)
-```recent_sales = sales_data.loc[sales_data.index > 100]```
+```python
+recent_sales = sales_data.loc[sales_data.index > 100]
+```
 
 
 ## Data Cleaning
