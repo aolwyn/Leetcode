@@ -64,6 +64,26 @@ df = pd.DataFrame(data)`
 columns = ['Column1', 'Column2']
 df = pd.DataFrame(data, columns=columns)`
 
+### Merging and Joining
+
+Merging combines datasets, facilitating a comprehensive view of information.
+
+-   Use Case:
+    -   Joining customer and order data to create a unified dataset.
+
+
+        `unified_data = pd.merge(customers, orders, on='customer_id')`
+
+
+        `df['profit_margin'] = (df['revenue'] - df['cost']) / df['revenue'] * 100`
+
+### Concatenating Datasets
+
+Use if columns are all the same and want to merge vertically:
+`pd.concat([df1,df2], axis=0)`
+
+or if datasets have different column names / you want to handle indices properly, reset the index:
+`result_reset_index = pd.concat([df1, df2], ignore_index=True)`
 
 Data Cleaning, Selection, Filtering
 --------------------
@@ -112,6 +132,13 @@ Cleaning is a crucial step in data analysis. Pandas offers tools to handle missi
 ### Correct Data Types
 - Ensure data types are appropriate for analysis.
 - Use `df.dtypes` to check and convert data types using `df['column'] = pd.to_numeric(df['column'], errors='coerce')`
+
+### Change Data Type
+```python
+#FILL NA BEFORE CHANGING DATATYPE!
+# Changing the datatype of the 'numeric_column' to float
+df['numeric_column'] = df['numeric_column'].astype(float)
+```
 
 ### Handling Date and Time
 - Ensure date/time columns are in the correct format using pd.to_datetime.
@@ -273,6 +300,18 @@ grouped_data = df.groupby('category')['value'].mean()
 # Display the aggregated data
 grouped_data.head()
 ```
+
+### Sorting Data
+
+Sorting data is crucial for better understanding and analysis.
+
+-   Use Case:
+    -   Sorting customer data alphabetically by name.
+
+
+        `sorted_customers = df.sort_values(by='customer_name')`
+
+
 
 ## Filtering Data
 
@@ -615,3 +654,67 @@ print(df)
    df['transaction_day'] = df['transaction_date'].dt.day
 
    ```
+
+## Data Transformation and Manipulation
+
+### Pivoting Data
+
+
+The pivot function is used to reshape a DataFrame based on column values. It takes the following important parameters:
+
+- index: This parameter specifies the column whose unique values will become the index of the new DataFrame.
+
+- columns: This parameter specifies the column whose unique values will become the columns of the new DataFrame.
+
+- values: This parameter specifies the column whose values will populate the cells of the new DataFrame.
+
+- aggfunc: This parameter is used when there are duplicate entries for the same combination of index and columns. It specifies the aggregation function to handle these duplicates.
+
+-   Use Case:
+    -   Converting long-format survey responses to a wide-format for summary analysis.
+
+        `df_wide_format = df.pivot(index='respondent_id', columns='question', values='response')`
+
+- 'respondent_id' becomes the index.
+'question' becomes the columns.
+'response' becomes the values.
+
+### Melting Data
+
+The melt function is used to unpivot a DataFrame from wide to long format. It takes the following important parameters:
+
+- id_vars: This parameter specifies the columns to be retained as-is during the melting process. These columns will become identifiers.
+
+- var_name: This parameter specifies the name of the new column that will store the variable names (values in the original DataFrame).
+
+- value_name: This parameter specifies the name of the new column that will store the values corresponding to the variable names.
+
+-   Use Case:
+    -   Unpivoting data to create a long-format for time-series analysis.
+
+
+        `df_long_format = pd.melt(df, id_vars=['date'], value_vars=['product1', 'product2'])`
+
+- Second Example:
+    - `df_melted = pd.melt(df, id_vars=['date'], var_name='variable', value_name='value')`
+- 'date' is retained as an identifier.
+- 'variable' becomes the new column for the variable names.
+- 'value' becomes the new column for the values.
+
+### Stacking and Unstacking
+
+Stacking and unstacking help manipulate multi-level index data.
+
+-   Use Case:
+    -   Stacking a multi-level index DataFrame to simplify the structure for certain analyses.
+
+        `df_stacked = df.stack()`
+
+### Reshaping with `stack` and `unstack`
+
+Transforming data between long and wide formats provides flexibility in data representation.
+
+-   Use Case:
+    -   Converting a long-format time-series dataset to a wide-format for comparison.
+
+        `df_wide_format = df_long.set_index(['date', 'category']).unstack('category')`
