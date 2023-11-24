@@ -1,6 +1,6 @@
 # NOTES!
 
-Problem Number: 0
+Notes taken from across the internet rec visiting: https://github.com/kdn251/interviews/ 
 
 # General Notes
 
