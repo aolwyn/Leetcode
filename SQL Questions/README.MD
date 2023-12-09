@@ -25,6 +25,11 @@
 - combination of column who's value matches primary key in different table
 - generally used for creating and maintaining relationship between two relations
 
+## Primary Key Vs. Foreign Key
+A primary key is a column or a set of columns that uniquely identifies each record in a table. It ensures that there are no duplicate rows in the table and provides a way to uniquely access specific rows. Typically, the primary key is defined when the table is created and is often an auto-incrementing number or a combination of columns that uniquely identify each row.
+
+A foreign key, on the other hand, is a column (or set of columns) in a table that establishes a relationship between two tables. It refers to the primary key in another table. It enforces referential integrity, ensuring that the values in the foreign key column exist in the referenced table's primary key column.
+
 ## What is cursor?
 - Cursor is a temporary workstation, created in memory when an SQL statement is executed.
 - a SQL cursor is a set of rows together with points that identify rows.
@@ -40,6 +45,8 @@
 | not good for hierarchical data storage | good for hierarchical data storage |
 | Good for complex queries | not as good for complex queries |
 
+## Alias
+In SQL, an alias is a temporary name assigned to a table or a column in a query. Aliases are used to make queries more readable or to shorten lengthy table or column names. They are created using the `AS` keyword. 
 
 ## Indexes
 Indexes in SQL are used to optimize the retrieval of data from a table. They work similar to book indexes, making data retrieval faster by providing a quick way to access specific rows based on the indexed column. Understanding how to create and use indexes is important for improving query performance.
