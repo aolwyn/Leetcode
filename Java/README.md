@@ -147,7 +147,7 @@ Notes taken from across the internet rec visiting: https://github.com/kdn251/int
 
 ### Bucket Sort
 
-- *Bucket Sort* is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by recursively applying the bucket sorting algorithm
+- *Bucket Sort* is a sorting algorithm that works by distributing the elements of an array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by recursively applying the bucket sorting algorithm. `n` represents number of elements in array, `k` is the number of buckets.
 - Time Complexity:
     - Best Case: `Ω(n + k)`
     - Worst Case: `O(n^2)`
