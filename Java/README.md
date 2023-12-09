@@ -48,6 +48,17 @@ Notes taken from across the internet rec visiting: https://github.com/kdn251/int
     - Insert: `O(1)`
     - Remove: `O(1)`
 
+### Dequeue
+
+- A *Dequeue* is the short form for a double-ended queue. It supports the insertion and removal of elements from both the front and the back of the queue. The name "double-ended queue" signifies that operations can occur at both ends. Dequeues can be implemented using various underlying data structures, such as dynamic arrays or linked lists.
+- Time Complexity:
+    - Enqueue Front (push_front): Add an element to the front of the dequeue. `O(1)`
+    - Enqueue Rear (push_back): Add an element to the rear (back) of the dequeue. ` O(1)`
+    - Dequeue Front (pop_front): Remove and return the element from the front of the dequeue. `O(1)`
+    - Dequeue Rear (pop_back): Remove and return the element from the rear of the dequeue. `O(1)`
+    - Front (peek_front): View the element at the front of the dequeue without removing it. `O(1)`
+    - Rear (peek_back): View the element at the rear of the dequeue without removing it. `O(1)`
+
 ### Hashing
 
 - *Hashing* is used to map data of an arbitrary size to data of a fixed size. The values returned by a hash function are called hash values, hash codes, or simply hashes. If two keys map to the same value, a collision occurs
