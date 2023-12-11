@@ -49,7 +49,7 @@ A foreign key, on the other hand, is a column (or set of columns) in a table tha
 In SQL, an alias is a temporary name assigned to a table or a column in a query. Aliases are used to make queries more readable or to shorten lengthy table or column names. They are created using the `AS` keyword. 
 
 ## Indexes
-Indexes in SQL are used to optimize the retrieval of data from a table. They work similar to book indexes, making data retrieval faster by providing a quick way to access specific rows based on the indexed column. Understanding how to create and use indexes is important for improving query performance.
+Indexes in SQL are used to optimize the retrieval of data from a table. They work similar to book indexes, making data retrieval faster by providing a quick way to access specific rows based on the indexed column. 
 
 
 1.  Purpose of Indexes:
@@ -64,8 +64,6 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 3.  Creating Indexes:
 
     -   Indexes are created using the `CREATE INDEX` statement in SQL. The syntax varies slightly between different database management systems (DBMS), as SQL implementations may differ.
-
-
 
    Example of creating a non-clustered index on a single column
     `CREATE INDEX index_name ON table_name(column_name);`
