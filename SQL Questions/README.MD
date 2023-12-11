@@ -88,6 +88,41 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 
     -   The database engine maintains statistics about the data distribution in the indexed columns to help optimize query execution plans.
 
+# Normalization
+
+In SQL, normalization refers to the process of organizing the data in a database to reduce redundancy and improve data integrity. The goal of normalization is to structure the database in a way that minimizes data redundancy and dependency by dividing the data into related tables. This is achieved through a series of rules called normal forms, with each normal form addressing specific types of issues related to data redundancy and dependency.
+
+Normalization helps maintain data integrity, reduces redundancy, and ensures that updates, inserts, and deletes occur without introducing anomalies. However, it's essential to strike a balance between normalization and performance, as highly normalized databases can lead to more complex queries and potentially slower performance in certain scenarios. The level of normalization applied depends on the specific requirements and characteristics of the data being modeled.
+
+Here are the main normal forms:
+
+1. **First Normal Form (1NF):**
+   - Definition: A relation is in 1NF if it contains only atomic (indivisible) values, and there are no repeating groups or arrays.
+   - Use Case: Apply 1NF when dealing with simple, flat data structures without nested or repeating elements.
+
+2. **Second Normal Form (2NF):**
+   - Definition: A relation is in 2NF if it is in 1NF and all non-key attributes are fully functionally dependent on the primary key.
+   - Use Case: Apply 2NF when there are partial dependencies in a table, and you want to eliminate redundancy by breaking the table into smaller, related tables.
+
+3. **Third Normal Form (3NF):**
+   - Definition: A relation is in 3NF if it is in 2NF and there are no transitive dependencies between non-key attributes.
+   - Use Case: Apply 3NF when there are transitive dependencies between non-key attributes, and you want to eliminate them to achieve a more granular level of normalization.
+
+4. **Boyce-Codd Normal Form (BCNF):**
+   - Definition: A relation is in BCNF if it is in 3NF and every determinant is a superkey.
+   - Use Case: Apply BCNF when you want to address certain anomalies that may still exist in a 3NF design, particularly in the case of multiple candidate keys.
+
+5. **Fourth Normal Form (4NF):**
+   - Definition: A relation is in 4NF if it is in BCNF and has no multi-valued dependencies.
+   - Use Case: Apply 4NF when dealing with multi-valued dependencies, and you want to decompose the table to eliminate redundancy.
+
+6. **Fifth Normal Form (5NF):**
+   - Definition: A relation is in 5NF if it is in 4NF and all join dependencies are implied by the superkeys.
+   - Use Case: Apply 5NF when dealing with join dependencies that are not satisfied by the existing normalization level.
+
+
+
+
 # Querying + Var Types
 ## How to comment
 use starred asterisks, i.e.,
