@@ -67,7 +67,7 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 
 
 
-    `-- Example of creating a non-clustered index on a single column`
+   Example of creating a non-clustered index on a single column
     `CREATE INDEX index_name ON table_name(column_name);`
 
 4.  Columns Included in Index:
@@ -83,7 +83,7 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 
 
 
-    `-- Example of dropping an index`
+    Example of dropping an index
     `DROP INDEX index_name ON table_name;`
 
 7.  Statistics:
