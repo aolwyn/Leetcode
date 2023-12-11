@@ -65,7 +65,7 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 
     -   Indexes are created using the `CREATE INDEX` statement in SQL. The syntax varies slightly between different database management systems (DBMS), as SQL implementations may differ.
 
-    sqlCopy code
+
 
     `-- Example of creating a non-clustered index on a single column
     CREATE INDEX index_name ON table_name(column_name);`
@@ -81,7 +81,7 @@ Indexes in SQL are used to optimize the retrieval of data from a table. They wor
 
     -   Indexes can be dropped (removed) using the `DROP INDEX` statement.
 
-    sqlCopy code
+
 
     `-- Example of dropping an index
     DROP INDEX index_name ON table_name;`
