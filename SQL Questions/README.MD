@@ -51,6 +51,45 @@ In SQL, an alias is a temporary name assigned to a table or a column in a query.
 ## Indexes
 Indexes in SQL are used to optimize the retrieval of data from a table. They work similar to book indexes, making data retrieval faster by providing a quick way to access specific rows based on the indexed column. Understanding how to create and use indexes is important for improving query performance.
 
+
+1.  Purpose of Indexes:
+
+    -   Improved Query Performance: Indexes speed up the data retrieval process by allowing the database engine to locate rows more quickly.
+    -   Faster Sorting and Grouping: Indexes can accelerate the sorting and grouping operations specified in queries.
+    -   Enhanced Performance of Joins: Indexes can significantly improve the performance of join operations between tables.
+2.  Types of Indexes:
+
+    -   Clustered Index: Determines the physical order of the rows in the table based on the indexed columns. Each table can have only one clustered index.
+    -   Non-Clustered Index: Provides a separate structure that maps the indexed columns to the corresponding rows. A table can have multiple non-clustered indexes.
+3.  Creating Indexes:
+
+    -   Indexes are created using the `CREATE INDEX` statement in SQL. The syntax varies slightly between different database management systems (DBMS), as SQL implementations may differ.
+
+    sqlCopy code
+
+    `-- Example of creating a non-clustered index on a single column
+    CREATE INDEX index_name ON table_name(column_name);`
+
+4.  Columns Included in Index:
+
+    -   Indexes can be created on one or more columns of a table.
+    -   The choice of columns for an index depends on the types of queries run against the table.
+5.  Impact on Insert, Update, and Delete Operations:
+
+    -   While indexes improve read performance, they can slightly slow down write operations (insert, update, delete). This is because the indexes need to be maintained whenever the data in the indexed columns is modified.
+6.  Dropping Indexes:
+
+    -   Indexes can be dropped (removed) using the `DROP INDEX` statement.
+
+    sqlCopy code
+
+    `-- Example of dropping an index
+    DROP INDEX index_name ON table_name;`
+
+7.  Statistics:
+
+    -   The database engine maintains statistics about the data distribution in the indexed columns to help optimize query execution plans.
+
 # Querying + Var Types
 ## How to comment
 use starred asterisks, i.e.,
