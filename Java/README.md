@@ -2,7 +2,27 @@
 
 Notes taken from across the internet rec visiting: https://github.com/kdn251/interviews/ 
 
+
 # General Notes
+
+## Recursion
+
+- *Recursion* is a programming technique where a function calls itself to solve a problem
+- Every recursive method should have a base case that stops the recursion.
+- Recursion is often seen in tree problems and can be done to calculate factorials, GCDs, and even binary search.
+
+```java
+public static long calculateFactorial(int n) {
+        // Base case: factorial of 0 or 1 is 1
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // Recursive case: n! = n * (n-1)!
+        else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+```
 
 ## DATA STRUCTURES
 
