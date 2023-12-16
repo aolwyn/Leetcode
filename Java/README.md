@@ -2,7 +2,27 @@
 
 Notes taken from across the internet rec visiting: https://github.com/kdn251/interviews/ 
 
+
 # General Notes
+
+## Recursion
+
+- *Recursion* is a programming technique where a function calls itself to solve a problem
+- Every recursive method should have a base case that stops the recursion.
+- Recursion is often seen in tree problems and can be used to calculate factorials, GCDs, and even binary search.
+
+```java
+public static long calculateFactorial(int n) {
+        // Base case: factorial of 0 or 1 is 1
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        // Recursive case: n! = n * (n-1)!
+        else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
+```
 
 ## DATA STRUCTURES
 
@@ -174,6 +194,92 @@ Notes taken from across the internet rec visiting: https://github.com/kdn251/int
     - Best Case: `Ω(nk)`
     - Worst Case: `O(nk)`
     - Average Case: `Θ(nk)`
+
+### Insertion Sort
+
+- *Insertion Sort* sorts the array one element at a time by repeatedly taking the next element and inserting it into its correct position. Divide into sorted and unsorted region, take element from unsorted and move to sorted, repeat until done.
+- Time Complexity:
+    - Best Case: O(n) - Already sorted.
+    - Average Case: O(n^2) - Each element compares with every previous one.
+    - Worst Case: O(n^2) - Reverse order.
+
+### Selection Sort
+
+- *Selection Sort* selects the smallest (or largest) element from the unsorted portion and swap it with the first (or last) element of the unsorted portion. Divide the array into a sorted and an unsorted region, find the minimum (or maximum) element in the unsorted region, swap it with the first (or last) element of the unsorted region, repeat until done.
+- Time Complexity:
+    - Best Case: O(n^2) - Always requires n^2/2 comparisons.
+    - Average Case: O(n^2) - Same as the best case, as there are no optimizations.
+    - Worst Case: O(n^2) - Same as the average and best case.
+ 
+### Heap Sort
+
+- *Heap Sort* uses a boinary heap data structure to build a heap and repeatedly extract the minimum (or maximum) element to achieve sorting. Build a max-heap (for ascending order) or a min-heap (for descending order) from the array, swap the root (maximum or minimum) with the last element, and reduce the size of the heap, 
+Heapify the root to maintain the heap property, Repeat steps 2-3 until the heap is empty.
+- Time Complexity:
+    - Best Case: O(n log n) - Building the heap.
+    - Average Case: O(n log n) - Building the heap.
+    - Worst Case: O(n log n) - Building the heap and extracting elements.
+
+
+## SEARCHING
+
+### Linear Search
+
+- Idea: Traverse the array sequentially to find the target element.
+- Time Complexity:
+    - Best Case: O(1) - Target is the first element.
+    - Average Case: O(n) - Target is equally likely to be anywhere in the array.
+    - Worst Case: O(n) - Target is the last element or not present.
+
+### Binary Search
+
+- Idea: Divide and conquer; repeatedly divide the sorted array in half and narrow down the search space.
+- Time Complexity:
+    - Best Case: O(1) - Target is the middle element.
+    - Average Case: O(log n) - Each comparison reduces the search space by half.
+    - Worst Case: O(log n) - Same as the average case.
+
+### Hashing (Hash Table Search)
+
+- Idea: Use a hash function to map keys to indices in an array; provides constant-time average case search.
+- Time Complexity:
+    - Average Case: O(1) - Assuming a good hash function and minimal collisions.
+    - Worst Case: O(n) - In the presence of collisions, when multiple keys map to the same index.
+
+### Interpolation Search
+
+- Idea: Similar to binary search, but uses the distribution of values to estimate the likely position of the target.
+- Time Complexity:
+    - Best Case: O(1) - Target is found with the first probe.
+    - Average Case: O(log log n) - Under certain assumptions about the distribution of data.
+    - Worst Case: O(n) - When the distribution is skewed, and the interpolation formula gives poor estimates.
+
+### Exponential Search
+
+- Idea: Start with a small range and exponentially increase it until a range containing the target is found, then perform binary search within that range.
+- Time Complexity:
+    - Average Case: O(log n) - Combines exponential and binary search.
+    - Worst Case: O(log n) - Same as the average case.
+
+### Binary Search Tree (BST) Search
+
+- Idea: Utilize the properties of a binary search tree, where nodes in the left subtree are smaller, and nodes in the right subtree are larger.
+- Time Complexity:
+    - Average Case: O(log n) - Balanced BST.
+    - Worst Case: O(n) - Unbalanced BST.
+
+### Ternary Search
+
+- Idea: Divide the sorted array into three parts and determine which part the target lies in, narrowing down the search space.
+- Time Complexity:
+    - Average Case: O(log3 n) - Each comparison reduces the search space to one-third.
+
+### Jump Search
+
+- Idea: Jump a fixed block size ahead in the array and check if the target is in the current block; if not, jump again.
+- Time Complexity:
+    - Average Case: O(√n) - Optimal for uniformly distributed data.
+    - Worst Case: O(√n) - Same as the average case.
 
 ## GRAPH ALGORITHMS
 
