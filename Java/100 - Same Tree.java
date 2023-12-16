@@ -20,7 +20,7 @@ class Solution {
         3 base cases -> if both are null, if one is null and other isnt, or the values arent equal.
         after the 3 checks, we can recursively call on the left and right nodes.
         */
-         if (p == null && q == null) return true;
+        if (p == null && q == null) return true;
         
         if (p == null || q == null) return false;
         
