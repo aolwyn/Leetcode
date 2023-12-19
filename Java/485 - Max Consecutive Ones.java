@@ -1,23 +1,29 @@
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
         /*Algorithm:
-        - we use a sliding window / count approach.
-        - count the 1's until 0 appears, take the max of curr window vs. prev highest.
-        - return count.
-        - 1 special case to consider, if last value is 1 need to update count before returning.
+        - we can use a sliding window approach. when the left pointer is 1, increment right pointer and current 
+        counter until the right pointer either hits the end of the array or a 0 element.
+        - at this point, we update the max count and then set the left pointer to the right pointers position.
         */
+
+        int left = 0;
+        int right = 0;
         int count = 0;
         int curr = 0;
 
-        for(int i =0; i < nums.length; i++){
-            if(nums[i] == 1){
-                curr++;
-            }else{
+        while(right < nums.length || left < nums.length){
+            if(nums[left]==1){
+                while(right < nums.length && nums[right] == 1){
+                    right++;
+                    curr++;
+                }
                 count = Math.max(count,curr);
-                curr =0;
+                left = right;
+                curr = 0;
             }
+            left++;
+            right++;
         }
-        count = Math.max(count,curr);
         return count;
     }
 }
