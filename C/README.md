@@ -5,4 +5,4 @@ Hello Erika, I am going to write the notes and whatnot here for you just because
 
 <br>
 
-I have broken down the notes into topics so you can look into what you need; I would <em>HIGHLY</em> reccomend you go in order.
+I have broken down the notes into topics so you can look into what you need; I would <em>HIGHLY</em> reccomend you go in order. On the left you'll see folders, click them to see whats in them. Only look at what's in the C folder, you'll get lost in the other documents.
