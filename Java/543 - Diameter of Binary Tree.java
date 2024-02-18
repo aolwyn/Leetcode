@@ -16,13 +16,14 @@
 class Solution {
 
     int result = -1;
-    
+
     public int diameterOfBinaryTree(TreeNode root) {
         /*Algorithm:
         - we are looking to solve for the diameter, the length of the path.
         - we can calculate the sum of heights of left and right subtree.
         - we will initialize the max height to -1 (null height) and then DFS on both; keep note of adding 1 to curr value because need to include cur node
         - for the DFS, compute left and right heights. update the sum of left and right subtrees into result then return the max height of curr node's left and right subtree.
+        - the solution below works bottom --> up.
         */
 
         DFS(root);
