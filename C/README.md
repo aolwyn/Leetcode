@@ -14,3 +14,7 @@ I have broken down the notes into topics so you can look into what you need; I w
 <a href="">Module 5: Arrays</a><br>
 <a href="">Module 6: Strings</a><br>
 <a href="">Module 7: Functions</a><br>
+<a href="">Module 8: Pointers</a><br>
+<a href="">Module 9: File I/O</a><br>
+<a href="">Module 10: Sorting</a><br>
+<a href="">Module 11: Searching</a><br>
