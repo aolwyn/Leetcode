@@ -12,5 +12,5 @@ I have broken down the notes into topics so you can look into what you need; I w
 <a href="https://github.com/aolwyn/Leetcode/tree/main/C/Module%203%20-%20Arithmetic">Module 3: Arithmetic</a><br>
 <a href="https://github.com/aolwyn/Leetcode/tree/main/C/Module%204%20-%20Flow%20Control">Module 4: Flow Control</a><br>
 <a href="">Module 5: Arrays</a><br>
-<a href="">Module 6: </a><br>
-<a href="">Module 7: </a><br>
+<a href="">Module 6: Strings</a><br>
+<a href="">Module 7: Functions</a><br>
