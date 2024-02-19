@@ -7,5 +7,7 @@ Hello Erika, I am going to write the notes and whatnot here for you just because
 
 I have broken down the notes into topics so you can look into what you need; I would <em>HIGHLY</em> reccomend you go in order. On the left you'll see folders, click them to see whats in them. Only look at what's in the C folder, you'll get lost in the other documents. Alternatively, click the linked below to fast travel between the modules.
 
-<a href="https://github.com/aolwyn/Leetcode/tree/main/C/Module%201%20-%20Introduction#introduction-to-c">Module 1</a>
-
+<a href="https://github.com/aolwyn/Leetcode/tree/main/C/Module%201%20-%20Introduction#introduction-to-c">Module 1: Introduction</a>
+<a href="">Module 2: Variables</a>
+<a href="">Module 3: Arithmetic</a>
+<a href="">Module 4: Control Flow</a>
