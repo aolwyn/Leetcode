@@ -1,12 +1,12 @@
 # Arithmetic
 
-### Intro
+## Intro
 - C provides a variety of arithmetic operators for performing basic mathematical operations on integer and floating-point values.
 - The result of an arithmetic operation depends on the data types of the operands involved. Mixing different data types may lead to implicit type conversion and affect the result.
 - The increment and decrement operators (++ and --) are unary operators used to increase or decrease the value of a variable by 1, respectively. They can be used in both prefix and postfix forms, with subtle differences in their behavior.
 - Modulus operator (%) is particularly useful for tasks such as determining whether a number is even or odd, or for cyclic calculations.
 
-### Types of operations
+## Types of operations
 - `Addition (+)`: Adding two values together.
 - `Subtraction (-)`: Subtracting one value from another.
 - `Multiplication (*)`: Multiplying two values.
@@ -61,7 +61,7 @@ int main() {
 }
 ```
 
-### Printing out Outputs and Special Formatters
+## Printing out Outputs and Special Formatters
 - `printf` Function: In C, the printf function is used to print formatted output to the standard output stream (usually the console).
 
 - Format Specifiers: Format specifiers are placeholders used within the format string of printf to indicate the type and format of the data to be printed. For example, `%d` is used to print integers, `%f` for floating-point numbers, `%c` for characters, `%s` for strings, and so on.
