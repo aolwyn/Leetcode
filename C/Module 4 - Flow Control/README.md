@@ -1,4 +1,4 @@
-# Control Flow
+# Flow Control
 
 ## Topics Covered
 - [ ] Conditional Statements
