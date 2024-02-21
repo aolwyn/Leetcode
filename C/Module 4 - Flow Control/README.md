@@ -123,7 +123,7 @@ for (int i = 10; i >= 1; i--) {
 - Use when the number of iterations is not known in advance and depends on a condition.
 - Useful when the loop needs to continue until a certain condition is no longer true.
 - Often used for input validation and reading data until a specific sentinel value is encountered.
-- 
+
 ```C
 // While Loop
 int j = 0;
