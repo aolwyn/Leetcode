@@ -26,19 +26,23 @@ datatype arrayName[arraySize];
 ```
 for example,
 ```C
-int numbers[5]; // Declares an array named "numbers" capable of holding 5 integers. All values default initialize to 0 in an integer array.
+// Declares an array named "numbers" capable of holding 5 integers. All values default initialize to 0 in an integer array.
+int numbers[5]; 
 ```
 If you want to initialize an array that has some values,
 ```C
-int arr[5] = {0,234,1058,3945,145}; // <-- this is how you declare an array with some values.
+//this is how you declare an array with some values.
+int arr[5] = {0,234,1058,3945,145}; 
 ```
 Note, you can also do what's called partial initialization; this is where you initialize an array but only populate some indexes; any indexes you didn't give a value to get defaulted to 0.
 ```C
-int partial[4] = {1,2,3}; //so element 4 would be initialized to 4.
+int partial[4] = {1,2,3}; //element 4 would be initialized to 0.
 ```
 There is another way you can initialize arrays. This method doesn't explicitly state the size of the array, but the computer will know based on the amount of numbers you initialize the array with:
 ```C
-int implicit[] = {2,134,514,6252}; //so here you can see on the left hand side, we didn't explicitly state the size of the array - but its of size 4 as you can see on the right.
+int implicit[] = {2,134,514,6252}; 
+//so here you can see on the left hand side, we didn't explicitly state 
+//the size of the array - but its of size 4 as you can see on the right.
 ```
 
 ## Accessing Elements
