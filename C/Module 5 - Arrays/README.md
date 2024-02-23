@@ -67,13 +67,13 @@ demo[2] = 100;
 <br>
 
 So lets entertain a new idea - what if you don't know the size of the array?<br>
-Well, if you remember, an array can only hold things of the same datatype. So, if you divide the total size of the array by just 1 element, you'll get the number of elements.<br>
+Well, if you remember, an array can only hold things of the same datatype. So, if you divide the total size of the array by the size of just 1 element, you'll get the number of elements.<br>
 here's it in action:
 ```C
 int unknown[] = {1,2,3,6,7,9,9}; //pretend this isn't initialized here...
 int numberOfElements = sizeof(unknown) / sizeof(unknown[0]); 
-```
-so cool trick - but how do we apply it?<br>
+``` 
+so, cool trick - but how do we apply it?<br>
 short answer is that it makes it very easy to iterate through each element in a `for` loop <strong>when you DON'T know the number of elements</strong>. 
 ```C
 int unknown[] = {1,2,3,4,5};
@@ -90,10 +90,10 @@ So what happens if you try to access an element larger than the size?<br>
 ## Increasing Size of an Array
 - So one of the things we said at the start is that we <strong>cannot</strong> change the size of an array, and, this is true.<br>
 - so what happens when we need to increase the size of the array?<br>
-There's a few steps we have to do:
-1. create a new array that's bigger than the original.
-2. use either a built in function or a for loop to transfer the old values over
-3. put in whatever new values you want.
+- There's a few steps we have to do:
+  - 1. create a new array that's bigger than the original.
+  - 2. use either a built in function or a for loop to transfer the old values over
+  - 3. put in whatever new values you want.
 
 Here's how to copy using a for loop:
 ```C
@@ -132,9 +132,9 @@ so how would we code this --> we can use `%p` in a print statement to print the 
 int arr[] = {10, 20, 30, 40};
  printf("%p", arr); 
 ```
-and to get the other element locations using code and basic math, the equation in memory for a given index is as follows:
-`address[i] = addressOfStart + (i * sizeof(datatype))`
-so for the example above where we had an int,
+and to get the other element locations using code and basic math, the equation in memory for a given index is as follows:<br>
+`address[i] = addressOfStart + (i * sizeof(datatype))` <br>
+so for the example above where we had an int,<br>
 `arr[3] = startAddressOfArr + (3 * sizeof(int))`
 
 TODO:
