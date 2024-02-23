@@ -5,6 +5,7 @@
 - [ ] Declaration and Initialization of Arrays
 - [ ] Accessing Array Elements
 - [ ] Arrays and Memory Allocation
+- [ ] Copying Arrays
 - [ ] Multidimensional Arrays
 
 ## What is an Array?
@@ -58,6 +59,13 @@ printf("%d ",demo[2]); //prints 3
 printf("%d ",demo[3]); //prints 4
 printf("%d ",demo[4]); //prints 5
 ```
+in a similar manner, you can use this logic to change the value of an array at a given index.<br>
+Using the same array from above, to change the value at the 3rd index to 100,
+```C
+demo[2] = 100;
+```
+<br>
+
 So lets entertain a new idea - what if you don't know the size of the array?<br>
 Well, if you remember, an array can only hold things of the same datatype. So, if you divide the total size of the array by just 1 element, you'll get the number of elements.<br>
 here's it in action:
@@ -76,5 +84,15 @@ for(int i = 0 ; i < numbberOfElements; i++){
 }
 ```
 
-So what happens if you try to access an element larger than the size?
+So what happens if you try to access an element larger than the size?<br>
 <strong>Accessing elements beyond the array bounds leads to undefined behavior and may result in program crashes or incorrect results.</strong>
+
+## Increasing Size of an Array
+So one of the things we said at the start is that we <strong>cannot</strong> change the size of an array, and, this is true.<br>
+so what happens when we need to increase the size of the array?<br>
+There's a few steps we have to do:
+1. create a new array that's bigger than the original.
+2. use either a built in function or a for loop to transfer the old values over
+3. put in whatever new values you want.
+
+here's an example of both methods:
