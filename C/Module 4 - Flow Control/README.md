@@ -1,10 +1,17 @@
 # Flow Control
 
-## Topics Covered
-- [ ] Conditional Statements
-- [ ] Logical Operators
-- [ ] Switch Statement
-- [ ] Loops
+- [Flow Control](#flow-control)
+  - [Conditional Statements](#conditional-statements)
+    - [Examples](#examples)
+  - [Logical Operators](#logical-operators)
+    - [Example](#example)
+  - [Switch Statements](#switch-statements)
+    - [Example](#example-1)
+  - [Loops](#loops)
+    - [For Loop](#for-loop)
+    - [While Loop](#while-loop)
+    - [Do-While Loop](#do-while-loop)
+
 
 
 ## Conditional Statements

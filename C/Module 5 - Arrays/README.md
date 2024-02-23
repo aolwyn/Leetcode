@@ -1,12 +1,16 @@
 # Arrays
 
-## Topics Covered
-- [ ] What is an array
-- [ ] Declaration and Initialization of Arrays
-- [ ] Accessing Array Elements
-- [ ] Arrays and Memory Allocation
-- [ ] Copying Arrays
-- [ ] Multidimensional Arrays
+## Table of Contents
+- [Arrays](#arrays)
+  - [Table of Contents](#table-of-contents)
+  - [What is an Array?](#what-is-an-array)
+    - [Key Characteristics:](#key-characteristics)
+  - [Declaration and Initialization](#declaration-and-initialization)
+  - [Accessing Elements](#accessing-elements)
+  - [Increasing Size of an Array](#increasing-size-of-an-array)
+    - [Memcpy](#memcpy)
+  - [Calculating the physical address in memory](#calculating-the-physical-address-in-memory)
+
 
 ## What is an Array?
 - Arrays are a fundamental data structure in C that allow storing multiple elements of the same data type under a single name.

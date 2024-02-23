@@ -1,5 +1,12 @@
 # Arithmetic
 
+- [Arithmetic](#arithmetic)
+  - [Intro](#intro)
+  - [Types of operations](#types-of-operations)
+    - [Examples](#examples)
+  - [Printing out Outputs and Special Formatters](#printing-out-outputs-and-special-formatters)
+
+
 ## Intro
 - C provides a variety of arithmetic operators for performing basic mathematical operations on integer and floating-point values.
 - The result of an arithmetic operation depends on the data types of the operands involved. Mixing different data types may lead to implicit type conversion and affect the result.

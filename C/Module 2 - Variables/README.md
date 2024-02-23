@@ -1,11 +1,13 @@
 # Variables and Data Types
 
-## Topics Covered 
+## Table of Contents
+- [Variables and Data Types](#variables-and-data-types)
+  - [Table of Contents](#table-of-contents)
+  - [Declaring and Initializing variables](#declaring-and-initializing-variables)
+  - [Fundamental Data Types in C](#fundamental-data-types-in-c)
+  - [Rules for Variable Naming and Declaration](#rules-for-variable-naming-and-declaration)
+    - [Examples](#examples)
 
-- [ ] Declaring and initializing variables.
-- [ ] Fundamental data types in C (e.g., int, float, char).
-- [ ] Rules for variable naming and declaration.
-- [ ] Basic arithmetic operations.
 
 ## Declaring and Initializing variables
 - Variables are used to store and manipulate data in a program. They must be declared before they can be used, specifying their data type and optionally their initial value.
