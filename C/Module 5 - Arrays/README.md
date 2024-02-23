@@ -74,7 +74,7 @@ int unknown[] = {1,2,3,6,7,9,9}; //pretend this isn't initialized here...
 int numberOfElements = sizeof(unknown) / sizeof(unknown[0]); 
 ```
 so cool trick - but how do we apply it?<br>
-short answer is that it makes it very easy to iterate through each element in a `for` loop when you know the number of elements. 
+short answer is that it makes it very easy to iterate through each element in a `for` loop <strong>when you DON'T know the number of elements</strong>. 
 ```C
 int unknown[] = {1,2,3,4,5};
 int numberOfElements = sizeof(unknown) / sizeof(unknown[0]);
