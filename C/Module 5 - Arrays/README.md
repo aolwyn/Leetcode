@@ -58,4 +58,23 @@ printf("%d ",demo[2]); //prints 3
 printf("%d ",demo[3]); //prints 4
 printf("%d ",demo[4]); //prints 5
 ```
+So lets entertain a new idea - what if you don't know the size of the array?<br>
+Well, if you remember, an array can only hold things of the same datatype. So, if you divide the total size of the array by just 1 element, you'll get the number of elements.<br>
+here's it in action:
+```C
+int unknown[] = {1,2,3,6,7,9,9}; //pretend this isn't initialized here...
+int numberOfElements = sizeof(unknown) / sizeof(unknown[0]); 
+```
+so cool trick - but how do we apply it?<br>
+short answer is that it makes it very easy to iterate through each element in a `for` loop when you know the number of elements. 
+```C
+int unknown[] = {1,2,3,4,5};
+int numberOfElements = sizeof(unknown) / sizeof(unknown[0]);
 
+for(int i = 0 ; i < numbberOfElements; i++){
+    printf("%d " , unknown[i]); 
+}
+```
+
+So what happens if you try to access an element larger than the size?
+<strong>Accessing elements beyond the array bounds leads to undefined behavior and may result in program crashes or incorrect results.</strong>
