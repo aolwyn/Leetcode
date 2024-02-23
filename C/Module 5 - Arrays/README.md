@@ -88,11 +88,55 @@ So what happens if you try to access an element larger than the size?<br>
 <strong>Accessing elements beyond the array bounds leads to undefined behavior and may result in program crashes or incorrect results.</strong>
 
 ## Increasing Size of an Array
-So one of the things we said at the start is that we <strong>cannot</strong> change the size of an array, and, this is true.<br>
-so what happens when we need to increase the size of the array?<br>
+- So one of the things we said at the start is that we <strong>cannot</strong> change the size of an array, and, this is true.<br>
+- so what happens when we need to increase the size of the array?<br>
 There's a few steps we have to do:
 1. create a new array that's bigger than the original.
 2. use either a built in function or a for loop to transfer the old values over
 3. put in whatever new values you want.
 
-here's an example of both methods:
+Here's how to copy using a for loop:
+```C
+int original [6] = {100,12,104,104,104,100};
+int new[10];
+for(int i = 0; i < sizeof(original)/sizeof(original[0]); i++){
+    new[i] = original[i]; //manually set each element's value in new array to be same as the one from original
+}
+
+```
+
+### Memcpy
+- the built in function uses what's called `memcpy`, which , as the name suggests, copies memory. So we copy the memory values of 1 place to a new place.
+- `memcpy` does require the `<string.h>` library.
+- the syntax is: `memcpy(destination, source, sizeOfSource)`
+here's an example of memcpy methods:
+```C
+//method 1, using the function:
+int original[3] = {100,101,123};
+int new[4];
+memcpy(new,original,sizeof(original)); 
+//so elements 0->2 will be the same as the original and the last element (index 3) in the new one will be initialized to 0.
+```
+
+## Calculating the physical address in memory
+- there's a high chance at one point you've tried to print an array as it is and gotten a wack answer.
+- you've likely just printed where the array is located in memory, or rather, the starting point.
+- let's use an example. for an integer array of size 4, lets say, in memory, it is located at 100. 
+- We know integers take up 4 bytes of memory, and we have the starting point. this means:
+  - the first element is located at memory address 100.
+  - the second element is located at memory address 104.
+  - the third element is at memory address108.
+  - the last element is at memory address 112.
+so how would we code this --> we can use `%p` in a print statement to print the start address of an array.
+```C
+int arr[] = {10, 20, 30, 40};
+ printf("%p", arr); 
+```
+and to get the other element locations using code and basic math, the equation in memory for a given index is as follows:
+`address[i] = addressOfStart + (i * sizeof(datatype))`
+so for the example above where we had an int,
+`arr[3] = startAddressOfArr + (3 * sizeof(int))`
+
+TODO:
+- define statements
+- multi-dimensional arrays
