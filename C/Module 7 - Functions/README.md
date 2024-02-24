@@ -204,14 +204,14 @@ void passByReference(int *ptr) {
 ```
 Pass by Value:
 
-- In the passByValue function, the parameter x is passed by value, meaning a copy of the original argument's value is passed.
-- Any changes made to the parameter x inside the function are local to the function and do not affect the original variable num in the main function.
+- In the `passByValue` function, the parameter `x` is passed by value, meaning a copy of the original argument's value is passed.
+- Any changes made to the parameter x inside the function are local to the function and <strong>do not affect the original variable num in the main function.</strong>
 - In the example, even though x is modified inside passByValue, the original variable num in main remains unchanged.
 
 Pass by Reference:
 
-- In the passByReference function, the parameter ptr is passed by reference using a pointer.
-- The address of the original variable num is passed to the function using the address-of operator &.
-- Inside the function, *ptr dereferences the pointer to access and modify the value stored at the memory address pointed to by ptr.
-- Any changes made to *ptr inside the function directly affect the original variable num in the main function.
-- In the example, *ptr is modified inside passByReference, resulting in the modification of the original variable num in main.
+- In the `passByReference` function, the parameter ptr is passed by reference using a pointer.
+- The address of the original variable num is passed to the function using the address-of operator `&`.
+- Inside the function, `*ptr` dereferences the pointer to access and modify the value stored at the memory address pointed to by ptr.
+- Any changes made to `*ptr` inside the function <strong>directly affect the original variable num in the main function.</strong>
+- In the example, `*ptr` is modified inside passByReference, resulting in the modification of the original variable num in main.
