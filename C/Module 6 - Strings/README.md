@@ -9,6 +9,7 @@
   - [ASCII and Character Encoding](#ascii-and-character-encoding)
   - [Strings from the user](#strings-from-the-user)
 
+
 ## What is a String
 - A string is like a word - a sequence of characters. It is used to represent text data.
 - In C, a string is a sequence of characters stored as an array of characters terminated by a null character `'\0'`
