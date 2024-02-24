@@ -2,15 +2,57 @@
 
 - [Functions](#functions)
   - [What is a function](#what-is-a-function)
+  - [Function Declaration](#function-declaration)
+    - [Function Prototype](#function-prototype)
+    - [Function Definition](#function-definition)
+    - [Calling Functions](#calling-functions)
   - [Scope](#scope)
     - [Types of Scope](#types-of-scope)
     - [Scope Rules](#scope-rules)
     - [Scope Resolution](#scope-resolution)
+  - [Function Parameters](#function-parameters)
 
 ## What is a function
+- Functions are blocks of code that perform specific tasks and can be re-used.
+- They are good for tasks that run more than once.
+- functions are generally of the form `returnType functionName(Parameters)`
+
+## Function Declaration 
+
+The general use of a function has 3 parts:
+1. The prototype (declaration)
+2. What it does (definition)
+3. Actual call
+
+### Function Prototype
+- fancy way of saying, "tell the program that I have a function. I haven't defined it yet, but it exists."
+- Put these before any function calls - normally above main, below any global #define statements.
+- The prototype just states the return type, name of the function, and then the parameters.
+<br>
+example:
+
+```C
+int add(int num1, int num2); // <-- prototype
+main{
+    printf("%d", add(1,2)); //would return 3; this is the actual call.
+    ...
+}
+
+int add(int num1, int num2){ // <-- define the function
+    return num1+num2;
+}
+```
+### Function Definition
+- this is where u give the function it's bread and butter - telling the computer what it actually does.
+- In the example above, we see that the definition takes in 2 integers and spits out the sum.
+- functions must have a return type, unless they are of type `void` - void functions don't return any value.
+- An example of a void function might just print something to the console; no value is being returned that will be used elsewhere, like the add function.
 
 
-
+### Calling Functions
+- To call a function, we simply invoke the name of the function and put in the arguments.
+- If arguments are not given correctly, errors can be thrown or things can go... wonky.
+- We can see above when we called add in the `printf` statement, we only called its name and gave it 2 integers.
 
 ## Scope
 
@@ -98,6 +140,17 @@ int main() {
     
     return 0;
 }
-
-
 ```
+
+## Function Parameters
+- You might be wondering why function parameters is down here. Well, that's because they have their own scope as you can see in the example above.
+<br>
+
+- Function parameters are declared within the parentheses following the function name in the function declaration and definition.
+- Each parameter consists of a data type followed by a parameter name, separated by commas if there are multiple parameters.
+- When a function is called, arguments (actual values or expressions) are provided for each parameter in the function call.
+- These arguments are passed to the function and assigned to the corresponding parameters, allowing the function to work with the provided data.
+- Parameters can have different data types, including primitive types (int, float, char), pointers, arrays, structures, or even other functions.
+- The data type of a parameter specifies the type of data that can be passed to the function when it is called.
+- <strong>Parameters act as local variables within the function, meaning they are accessible only within the function's scope.</strong>
+- They can be used like any other variable within the function's body to perform calculations, comparisons, or other operations.
