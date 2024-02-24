@@ -11,6 +11,8 @@
     - [Scope Rules](#scope-rules)
     - [Scope Resolution](#scope-resolution)
   - [Function Parameters](#function-parameters)
+  - [Pass by Value, Pass by Reference](#pass-by-value-pass-by-reference)
+    - [Pass by Value and Pass by Reference Example](#pass-by-value-and-pass-by-reference-example)
 
 ## What is a function
 - Functions are blocks of code that perform specific tasks and can be re-used.
@@ -154,3 +156,62 @@ int main() {
 - The data type of a parameter specifies the type of data that can be passed to the function when it is called.
 - <strong>Parameters act as local variables within the function, meaning they are accessible only within the function's scope.</strong>
 - They can be used like any other variable within the function's body to perform calculations, comparisons, or other operations.
+
+## Pass by Value, Pass by Reference
+- <strong> THIS SECTION IS VERY IMPORTANT. READ IT. UNDERSTAND IT. </strong>
+- In C, function parameters are typically passed by value, meaning the function receives a copy of the argument's value.
+- Changes made to the parameter within the function do not affect the original argument passed to the function.
+- To modify the original argument's value within the function, pointers are used to pass arguments by reference.
+- By passing a pointer to the variable, the function can access and modify the original data.
+
+### Pass by Value and Pass by Reference Example
+```C
+#include <stdio.h>
+
+// Function prototype for pass by value
+void passByValue(int x);
+
+// Function prototype for pass by reference
+void passByReference(int *ptr);
+
+int main() {
+    int num = 10;
+
+    // Pass by value
+    printf("Before pass by value: num = %d\n", num);
+    passByValue(num);
+    printf("After pass by value: num = %d\n", num); // num remains unchanged
+
+    // Pass by reference
+    printf("\nBefore pass by reference: num = %d\n", num);
+    passByReference(&num);
+    printf("After pass by reference: num = %d\n", num); // num is modified
+
+    return 0;
+}
+
+// Function definition for pass by value
+void passByValue(int x) {
+    x = x * 2; // Modify the local variable x
+    printf("Inside pass by value: x = %d\n", x); // x is modified
+}
+
+// Function definition for pass by reference
+void passByReference(int *ptr) {
+    *ptr = *ptr * 2; // Modify the value at the memory address pointed to by ptr
+    printf("Inside pass by reference: *ptr = %d\n", *ptr); // *ptr is modified
+}
+```
+Pass by Value:
+
+- In the passByValue function, the parameter x is passed by value, meaning a copy of the original argument's value is passed.
+- Any changes made to the parameter x inside the function are local to the function and do not affect the original variable num in the main function.
+- In the example, even though x is modified inside passByValue, the original variable num in main remains unchanged.
+
+Pass by Reference:
+
+- In the passByReference function, the parameter ptr is passed by reference using a pointer.
+- The address of the original variable num is passed to the function using the address-of operator &.
+- Inside the function, *ptr dereferences the pointer to access and modify the value stored at the memory address pointed to by ptr.
+- Any changes made to *ptr inside the function directly affect the original variable num in the main function.
+- In the example, *ptr is modified inside passByReference, resulting in the modification of the original variable num in main.
