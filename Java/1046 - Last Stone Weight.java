@@ -31,3 +31,43 @@ class Solution {
 
     }
 }
+
+/*
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        /*Algorithm:
+        - populate a priority queue
+        - in the pq, pop last 2 and then compute the smash.
+        - for the pq, add the neg stone value because it prioritizes 'lower' valued things.
+        
+
+        if(stones.length == 0)
+            return 0;
+        if(stones.length ==1)
+            return stones[0];
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for(int stone : stones){
+            pq.offer(-stone);
+        }
+
+        while(pq.size()>1){
+           
+            int num1 = pq.poll();
+            int num2 = pq.poll();
+            if(num1 != num2){
+                pq.offer(num1-num2);
+            }
+        }
+
+        if(pq.size()==1){
+            return -pq.poll();
+        }
+
+        return 0;
+
+
+    }
+}
+ */
