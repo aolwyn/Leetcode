@@ -31,10 +31,6 @@ class Solution {
             backtrack(candidates,target-candidates[index],index,current);
             current.remove(current.size()-1);
             backtrack(candidates,target,index+1,current);
-
         }
     }
-
-
-    
 }
