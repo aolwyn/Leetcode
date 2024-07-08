@@ -154,6 +154,7 @@ Example: `df['category'].replace({'catgry': 'category'}, inplace=True)`
 - Example: `df.drop(['column1', 'column2'], axis=1, inplace=True)`
 
 ### Handling Categorical Data
+
 Categorical data requires special attention during the data analysis process. It involves converting textual or categorical information into a format that machine learning algorithms can understand. 
 1\. Label Encoding:
 -------------------
