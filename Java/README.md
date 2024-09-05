@@ -28,7 +28,7 @@ public static long calculateFactorial(int n) {
 
 ### Array
 
-- An A*rray* is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key.
+- An *Array* is a data structure consisting of a collection of elements (values or variables), each identified by at least one array index or key.
 - Arrays store things of the same data type and store it at contiguous memory locations.
 - Time Complexity:
     - Access: `O(1)`
