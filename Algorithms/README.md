@@ -2,7 +2,7 @@
 
 <p> To you, the reader - a quick <strong>disclaimer</strong>. I <u>do not claim to cover all material that you may have taught</u>. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
 
-<p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures.</strong></p>
+<p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures + some algorithms. There is also visualizations and graphics in that file.</strong></p>
 
 <h1>Table of Contents</h1>
 
@@ -315,3 +315,53 @@ Algorithm Branch_and_Bound():
 Pruning in Branch and Bound algorithms involves skipping the exploration of certain branches of the search tree. This happens under the following conditions:
 1. **Bound Comparison**: If the lower bound of a node is greater than or equal to the best solution found so far (upper bound U), there's no need to explore this node further because it cannot possibly lead to a better solution.
 2. **Feasibility**: If a node or its development violates problem constraints or conditions for optimality, it is pruned.
+
+## Sets
+A **set** is an abstract data type that can store certain values, without any particular order, and with no repeated values. It is a collection of distinct objects.
+
+**Characteristics**:
+  - **Unordered**: The elements in a set do not have a specific order.
+  - **Unique Elements**: Each element appears only once; no duplicates are allowed.
+  - **Access Operations**: Basic operations include adding elements, removing elements, and checking whether an element exists in the set.
+
+We also have what is called **Disjoint Sets**. Disjoint set data structures, also known as union-find or merge-find sets, are used to keep track of a partition of a universe into disjoint (non-overlapping) sets. Disjoint sets are particularly useful in network connectivity, image processing, and finding cycles in graphs where the universe is a set of elements and the partitions are subsets.
+
+Disjoint sets have a few operations associated with them:
+- **Make-Set(x)**: Initializes a new set with x as its only member.
+- **Union(x, y)**: Merges the sets containing elements x and y, with one set's representative pointing to the other's.
+- **Find-Set(x)**: Returns the representative of the set containing x, which involves following parent pointers up to the root.
+
+Disjoint sets can be done with linked lists, but they suck. So the more common approach is to use a tree. Specifically, a rooted tree.
+
+###  Implementation with Rooted Trees
+- **Structure**: Each set is represented by a rooted tree where each node points to its parent and the root points to itself.
+- **Operations**:
+  - **Make-Set(x)**: x points to itself, effectively its own parent.
+  - **Find-Set(x)**: Traverse parent pointers until the root is reached.
+  - **Union(x, y)**: The roots of the trees containing x and y are linked. The decision of which root becomes the representative can be optimized using methods like union by rank.
+
+#### Pseudocode for the above operations
+``` 
+Make-Set(x)
+  x.parent = x
+  x.rank = 0
+
+Union(x, y)
+  rootX = Find-Set(x)
+  rootY = Find-Set(y)
+  if rootX != rootY
+      Link(rootX, rootY)
+
+Find-Set(x)
+  if x != x.parent
+      x.parent = Find-Set(x.parent)
+  return x.parent
+```
+
+### Optimization Techniques (for the trees)
+1. **Union by Rank**: Maintains a rank for each tree as an estimate of its height and ensures that the smaller tree (by rank) is pointed to the larger tree to avoid increasing the tree height unnecessarily.
+2. **Link(x, y)**: Function to link two trees based on their ranks. If ranks are equal, the rank of the resulting tree is incremented.
+3. **Path Compression**: During a Find-Set operation, makes all nodes on the path from a found node to the root point directly to the root, flattening the structure and speeding up future operations.
+
+## Graphs
+- if you want a quick run through in Java, see the readme.
