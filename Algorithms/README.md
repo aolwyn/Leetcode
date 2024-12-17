@@ -2,7 +2,7 @@
 
 <p> To you, the reader - a quick <strong>disclaimer</strong>. I <u>do not claim to cover all material that you may have taught</u>. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. I <u>specifically leave out mathematical concepts</u> (i.e., matrix mult.) as they are simply not worth my time to write out in markdown format. You are still responsible for learning this. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
 
-<p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures + some algorithms. There is also visualizations and graphics in that file.</strong></p>
+<p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures + some algorithms. There is also visualizations and graphics in that file. This is also a personal repository and has nothing to do with being a TA. So don't throw me under the bus 😎</strong></p>
 
 # Table of Contents
 - [Table of Contents](#table-of-contents)
