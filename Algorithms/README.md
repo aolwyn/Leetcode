@@ -11,7 +11,7 @@
 <h1>Algorithms</h1>
 <p>An algorithm is a well-defined computational procedure that takes a
 value or set of values as input and produces a value or a set a values
-as output; it completes the computation in a finite amount of time. </p>
+as output; it completes the computation in a finite amount of time. Algorithms are important as they improve efficiency and provide a systematic way to solving problems. </p>
 
 <p>An algorithm is <em>correct</em> if, for every instance provided as input,
 it halts <u>and</u> it produces the correct output for that instance.</p>
