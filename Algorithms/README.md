@@ -515,3 +515,108 @@ PRIM(G, r): // r is start vertex
 `𝑂(𝐸log𝑉)`
  with efficient priority queue structures, making them suitable for large graphs.
 
+## Path Finding
+
+As the name suggests, how to determine the shortest paths. There's a few categories in this, but notably, how to find the shortest path given an input and then a pairwise method.
+
+ **Optimal Substructure**: A shortest path between two vertices contains other shortest paths within it. This property is foundational for developing shortest path algorithms.
+
+Use case includes Navigation in road networks, routing in computer networks, and logistics optimization.
+
+**Problem Variants**:
+  - **Single-Destination**: Find the shortest path to a specific vertex by reversing edge directions.
+  - **Single-Pair**: Directly determine the shortest path between two specified vertices.
+  - **All-Pairs**: Compute the shortest paths from each vertex to every other vertex 
+
+## **Single Source Shortest Paths**
+
+### Relaxation Technique
+Relaxation is an operation at the heart of many shortest path algorithms that attempts to improve the shortest path estimate for a vertex.
+
+**Process**:
+  1. **Initial Setup**: Each vertex  `v` in the graph has a distance value `d[v]`, initially set to infinity, except for the source vertex ` s ` which is set to zero.
+  2. **Edge Relaxation**: For an edge `(u, v)` with weight ` w(u, v) `, if `d[v]` can be reduced by taking `u` en route to `v`, then the relaxation process updates `d[v]` to `d[u] + w(u, v)` and sets `v`'s predecessor to `u`.
+  Pseudocode for the Relax function: 
+```
+    RELAX(u, v, w):
+      if d[v] > d[u] + w(u, v):
+        d[v] = d[u] + w(u, v)
+        π[v] = u
+```
+
+- **Usage in Algorithms**:
+  - **Dijkstra's Algorithm**: Uses relaxation to iteratively finalize the shortest path to each vertex, ensuring no cycles with negative weights.
+  - **Bellman-Ford Algorithm**: Applies relaxation to all edges in each of  `|V|-1` iterations, where `|V|` is the number of vertices. It also checks for negative-weight cycles by verifying that no further relaxations are possible.
+
+#### Importance of Relaxation
+- **Efficiency**: Relaxation helps algorithms converge to the correct shortest path distances quickly and efficiently.
+- **Detecting Negative Cycles**: In the Bellman-Ford algorithm, if a relaxation operation can still reduce  `d[v]` after `|V|-1` iterations, a negative-weight cycle is present, which affects the feasibility of finding reliable shortest paths.
+
+<u>TLDR</u> - Relaxation is a fundamental operation that optimizes the pathfinding process in graph algorithms by systematically ensuring that the shortest path estimates are minimized according to graph topology and edge weights.
+
+
+### Bellman-Ford Algorithm
+The Bellman-Ford algorithm computes the shortest paths from a single source vertex to all other vertices in a graph and is **capable of handling graphs with negative weight edges**.
+
+Unlike Dijkstra’s, it can accommodate graphs containing negative weight edges as long as there are no negative weight cycles.
+
+It provides a method to detect negative weight cycles reachable from the source, which are scenarios where no shortest path exists.
+
+Pseudocode:
+```
+BELLMAN-FORD(G, w, s):
+  INITIALIZE-SINGLE-SOURCE(G, s) // Set all vertices' distances to ∞ except for the source s which is set to 0
+  for i from 1 to |G.V|-1:       // Loop through vertices |V|-1 times (where |V| is the number of vertices)
+    for each edge (u, v) in G.E:
+      RELAX(u, v, w)             // Relax each edge, trying to find shorter paths
+  for each edge (u, v) in G.E:
+    if v.d > u.d + w(u, v):      // Check for negative-weight cycles that are reachable from the source
+      return FALSE               // If a cycle is found, return FALSE
+  return TRUE                    // If no cycles, return TRUE indicating success
+
+```
+
+### Dijkstra's Algorithm
+Dijkstra's algorithm finds the shortest paths from a source vertex to all other vertices in a graph with **non-negative edge weights**. It progressively expands the closest frontier until all vertices are processed.
+
+Utilizes a priority queue to always extend the shortest path discovered so far.
+
+Efficient for graphs with non-negative weights and widely used in practical applications such as GPS navigation systems.
+
+
+Pseudocode:
+  ```plaintext
+  DIJKSTRA(G, w, s):
+    INITIALIZE-SINGLE-SOURCE(G, s)      // Initialize the graph, set source distance to 0, others to ∞
+    S = empty set                       // S will eventually contain the vertices with finalized shortest paths
+    Q = G.V                             // Priority queue of all vertices in the graph, prioritized by shortest distance to s
+    while Q is not empty:
+      u = EXTRACT-MIN(Q)                // Extract vertex u, the one with the smallest distance estimate
+      S = S ∪ {u}                       // Add u to the set of finalized vertices
+      for each vertex v adjacent to u:
+        RELAX(u, v, w)                  // Relax the edge if a shorter path from s to v through u is found
+```
+
+### Directed Acyclic Graphs (DAG)
+DAGs are a special case - these graphs do not contain cycles, thus enabling unique topological sorting and efficient shortest path calculations. DAGs have guaranteed convergence. 
+```
+DAG-SHORTEST-PATHS(G, w, s):
+  topologically sort the vertices of G
+  INITIALIZE-SINGLE-SOURCE(G, s)
+  for each vertex u, taken in topologically sorted order
+    for each vertex v adjacent to u
+      RELAX(u, v, w)
+```
+### Complexities
+While Dijkstra's algorithm can be optimized to 
+`O(ElogV)` with the right priority queue, Bellman-Ford operates in `O(VE)`, suitable for different scenarios based on graph density and edge weight characteristics.
+
+## All Pairs - Shortest Path
+
+All-pairs shortest paths algorithms are designed to find the shortest paths between every pair of vertices in a graph.
+
+Use case includes road network distances and communication network diameter, measuring the longest transit time through the network.
+
+In theory, you could use repeated single-source algorithms but specialized all-pairs algorithms aim for better efficiency.
+
+
