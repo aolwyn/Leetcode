@@ -1,6 +1,6 @@
 <h1> Algorithms </h1>
 
-<p> To you, the reader - a quick <strong>disclaimer</strong>. I do not claim to cover all material that you may have taught. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
+<p> To you, the reader - a quick <strong>disclaimer</strong>. I <u>do not claim to cover all material that you may have taught</u>. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
 
 <p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures.</strong></p>
 
@@ -74,6 +74,9 @@ END FUNCTION
 ### Divide-and-Conquer Technique
 - Splits problem into smaller subproblems.
 - Recursively solves subproblems and combines results.
+  - **Divide**: Break problems into subproblems.
+  - **Conquer**: Solve subproblems recursively.
+  - **Combine**: Merge solutions to solve the original problem.
 - Requires:
   - **Base case**: Directly solvable.
   - **Recursive case**: Divides, conquers, and combines solutions.
@@ -90,8 +93,8 @@ END FUNCTION
 6. **Repeat**: Repeat steps 2-5 for each element in the array until the entire array is sorted.
 
 ### Complexities
-- **Time Complexity**: Average and worst-case time complexity is O(n^2), where n is the number of items being sorted.
-- **Space Complexity**: O(1)additional space, making it an in-place sorting algorithm.
+- **Time Complexity**: Average and worst-case time complexity is `O(n^2)`, where n is the number of items being sorted.
+- **Space Complexity**: `O(1)` additional space, making it an in-place sorting algorithm.
 
 
 ## Merge Sort
@@ -103,8 +106,8 @@ END FUNCTION
 3. **Combine**: Merge the two halves together into a single sorted list.
 
 ### Complexities
-- **Time Complexity**: O(n \log n) for all cases (best, average, worst) because the list is divided into halves and each element is considered at each level of merge operations.
-- **Space Complexity**: O(n)\additional space is required for the merging process, not counting the space used for the input array.
+- **Time Complexity**: `O(nlog n)` for all cases (best, average, worst) because the list is divided into halves and each element is considered at each level of merge operations.
+- **Space Complexity**: `O(n)` additional space is required for the merging process, not counting the space used for the input array.
 
 ## Asymptotic Analysis
 Effectively, how we categorize run times.
@@ -192,4 +195,60 @@ Application of the Recursion-Tree Method:
 3. **Sum All Levels**: The depth of the tree is `log n`, summing `n` across `log n + 1` levels.
 4. **Analyze the Sum**: The sum across all levels is `n(log n + 1)`, simplifying to `Θ(n log n)`.
 
+## Matrix Multiplication
+- comparing the regular to the others, <strong>TL;DR</strong>
+  - Strassen's and Tiled/Blocked Matrix Multiplication: Strassen's algorithm reduces the complexity to `O(n^2.807)`by decreasing recursive multiplications, while tiled or blocked techniques improve execution by optimizing data locality and cache usage, significantly enhancing performance by minimizing memory hierarchy delays.
+
+- **Simple Recursive Approach**:
+  - **Operation**: Subdivides matrix into smaller matrices, recursively performs multiplication, and combines results without explicitly managing data movement between memory hierarchies.
+  - **Running Time**: Defined by the recurrence `T(n) = 8T(n/2) + Θ(1)`, leading to a `Θ(n^3)` time complexity.
+
+- **Strassen’s Algorithm**:
+  - **Enhancement**: Reduces the number of recursive multiplications, changes how submatrices are combined.
+  - **Recurrence Relation**: `T(n) = 7T(n/2) + Θ(n^2)`.
+  - **Improvement**: Achieves a running time of `Θ(n^2.807)`, showcasing an asymptotic improvement over the naive approach.
+
+### Blocked Matrix Multiplication
+
+### Performance Issues with Memory Hierarchy
+- **Concept**: Blocking or tiling is used to optimize matrix multiplication in the context of modern computer architectures with memory hierarchies.
+
+### Blocked/Tiled Matrix Multiplication
+- **Implementation**: Rearranges the standard matrix multiplication to improve cache usage, reducing the number of cache misses.
+- **Details**: 
+  - Loops are blocked in such a way that the data needed for one block of computation stays in cache as long as possible.
+  - The operation involves iterating over blocks and performing multiplication within blocks, improving data locality.
+
+ ## Dynamic Programming
+
+**Dynamic Programming (DP)** solves problems by combining solutions to overlapping subproblems, typically using memoization to save results of subproblems.
+
+### Key Concepts
+- **Memoization**: An optimization technique that involves storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+- **Tabulation**: A bottom-up dynamic programming approach where results are solved for and stored in a table, typically avoiding recursion by filling up entries in a systematic manner.
+
+### Steps in Dynamic Programming
+1. **Characterize the Structure of an Optimal Solution**: Break down the problem into smaller subproblems and understand how these subproblems contribute to the overall solution.
+2. **Recursively Define the Value of an Optimal Solution**: Formulate the problem in terms of recursive equations, expressing the solution to the problem in terms of solutions to smaller subproblems.
+3. **Compute the Value of an Optimal Solution**: Using either memoization (top-down) or tabulation (bottom-up), fill out the values needed to construct the solution.
+4. **Construct an Optimal Solution from Computed Information**: Use the stored information to backtrack and determine the sequence of decisions that leads to the optimal outcome.
+
+### Example: Matrix-Chain Multiplication
+- **Problem**: Determine the most efficient way to multiply a chain of matrices.
+- **Solution**: Use DP to find the minimum number of multiplications by splitting the problem into smaller segments and solving for the minimal cost at each split.
+- **Implementation Details**:
+  - Use a DP table to store the minimum cost of multiplying matrices from i to j.
+  - The optimal cost is determined by splitting the product at different points and combining the results using previously computed values.
+
+## Greedy Algorithms
+
+**Greedy Algorithms** solve optimization problems by making a series of choices, each locally optimal, with the hope that this leads to a globally optimal solution.
+
+### Key Principles
+- **Greedy-Choice Property**: Each choice is local and does not require re-evaluating previous choices.
+- **Optimal Substructure**: A problem exhibits optimal substructure if an optimal solution to the problem contains optimal solutions to its subproblems.
+
+### Applications
+- **Huffman Coding**: A greedy method for data compression that builds an optimal prefix-free binary tree based on character frequencies.
+- **Offline Caching**: Utilizes a farthest-in-future strategy to minimize cache misses, demonstrating the application of greedy algorithms in system optimizations.
 
