@@ -364,4 +364,97 @@ Find-Set(x)
 3. **Path Compression**: During a Find-Set operation, makes all nodes on the path from a found node to the root point directly to the root, flattening the structure and speeding up future operations.
 
 ## Graphs
-- if you want a quick run through in Java, see the readme.
+- Note. If you're confused after reading this section, see the Java folder.
+
+ A graph  `G = (V, E)`  consists of a set of vertices `V`  and a set of edges `E`  that connect pairs of vertices. Graphs can be either directed (arrows) or undirected (lines).
+
+ A graph can be represented in 1/2 ways:
+ 1.  **Adjacency List**: Best for large sparse graphs, stores a list of adjacent vertices for each vertex, with a storage requirement of  `Θ(V + E)`.
+ 2.  **Adjacency Matrix**: Suitable for dense graphs or when fast edge existence checks are needed, uses a matrix to represent edges with a storage requirement of `Θ(V^2)`.
+
+Graphs can be searched using multiple different methods. The most frequently used are BFS and DFS.
+
+### Breadth-First Search (BFS)
+- **Purpose**: Discovers all vertices reachable from a source vertex `s`, computing the shortest path from `s` to each vertex in terms of edge count.
+- **Process**: Expands level by level from the source, using a queue to manage the frontier and marking vertices as visited.
+- **Running Time**: `O(V + E)` with an adjacency list representation.
+
+Pseudocode:
+```
+ BFS(G, s)
+    for each vertex u in G.V - {s}
+      u.color = WHITE
+      u.distance = INFINITY
+      u.parent = NIL
+    s.color = GRAY
+    s.distance = 0
+    s.parent = NIL
+    Q = empty queue
+    ENQUEUE(Q, s)
+    while Q is not empty
+      u = DEQUEUE(Q)
+      for each v in G.Adj[u]
+        if v.color == WHITE
+          v.color = GRAY
+          v.distance = u.distance + 1
+          v.parent = u
+          ENQUEUE(Q, v)
+      u.color = BLACK
+```
+
+### Depth-First Search (DFS)
+- **Purpose**: Explores as far as possible along each branch before backtracking, useful for classification of edges and properties like connectivity.
+- **Process**: Uses a stack (implicitly via recursion) to dive deep into the graph, backtracking when no further advancement is possible.
+- **Running Time**: `Θ(V + E)` with an adjacency list representation.
+
+Pseudocode:
+```
+DFS(G)
+  for each vertex u in G.V
+    u.color = WHITE
+    u.parent = NIL
+  time = 0
+  for each vertex u in G.V
+    if u.color == WHITE
+      DFS-VISIT(G, u)
+
+DFS-VISIT(G, u)
+  time = time + 1
+  u.discovery = time
+  u.color = GRAY
+  for each v in G.Adj[u]
+    if v.color == WHITE
+      v.parent = u
+      DFS-VISIT(G, v)
+  u.color = BLACK
+  time = time + 1
+  u.finishing = time
+```
+
+### Topological Sort
+- **Purpose**: Orders the vertices of a directed acyclic graph (DAG) linearly such that for every directed edge ` (u, v)`, vertex `u` appears before `v`.
+- Topological sort is often used in scheduling tasks, for things where some tasks might precede others (think prerequisites for a course.)
+- **Process**: Utilizes DFS to sort vertices by decreasing order of finishing times.
+- **Running Time**:  `Θ(V + E)` using DFS.
+
+Psuedocode:
+
+```
+TOPOLOGICAL-SORT(G)
+  call DFS(G) to compute finishing times v.f for each vertex v
+  as each vertex is finished, insert it onto the front of a linked list
+  return the linked list of vertices
+```
+
+### Strongly Connected Components (SCC)
+SCC's identify maximal sets of nodes in a directed graph where each node is reachable from any other node in the same set.
+
+Graph Types Without SCC: Directed acyclic graphs (DAGs) do not have strongly connected components as there are no cycles, meaning no vertex can reach itself via a directed path.
+  
+
+  The process to get the SCC is as follows:
+
+  1. Perform a DFS of the graph to get finish times.
+  2. Compute the transpose of the graph.
+  3. Perform DFS on the transposed graph in the order of decreasing finish times from the first DFS.
+- **Running Time**:  `Θ(V + E)` for both DFS executions and the graph transpose, making it highly efficient.
