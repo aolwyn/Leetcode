@@ -252,3 +252,66 @@ Application of the Recursion-Tree Method:
 - **Huffman Coding**: A greedy method for data compression that builds an optimal prefix-free binary tree based on character frequencies.
 - **Offline Caching**: Utilizes a farthest-in-future strategy to minimize cache misses, demonstrating the application of greedy algorithms in system optimizations.
 
+#### Huffman's Algorithm
+```
+Algorithm Huffman(C):
+    Input: A set C of n characters and their frequencies
+    Output: An optimal prefix-free binary tree
+
+    1. Create a priority queue Q to hold trees, initially containing all characters in C, each as a single-node tree with frequency as the key.
+    
+    2. for i from 1 to n - 1:
+        a. Allocate a new node z
+        b. z.left = x = Extract-Min(Q)  // Remove and get the node with the smallest frequency
+        c. z.right = y = Extract-Min(Q) // Remove and get the next smallest frequency node
+        d. z.frequency = x.frequency + y.frequency  // Set the frequency of new node as the sum of the two
+        e. Insert Q, z  // Insert the new node back into the priority queue
+    
+    3. Return Extract-Min(Q)  // The remaining node in the queue is the root of the Huffman tree
+```
+
+## Branch and Bound
+**Branch and Bound** is an algorithmic technique used to solve combinatorial optimization problems by systematically enumerating all candidate solutions.
+
+Branch and bound is commonly applied to the **Graph Bisection Problem**, where the task is to divide the graph into two subsets (cells) that are as equal as possible in terms of vertex weight, while minimizing the sum of the weights of the edges that are cut.
+
+The logic is as follows:
+
+- **Subproblem Division**: Divide the original problem into smaller subproblems.
+
+- **Tree Representation**: Solutions are explored in a tree format, where each node represents a subproblem.
+
+- **Bounding**: Use upper and lower bounds to prune the search space, avoiding paths that cannot produce a better solution than already found.
+
+the **Root** node represents the starting point of the problem. **Leaf** nodes represent early stopping points due to a condition (see below,) or a feasible solution with known cost.
+
+The Pseudocode is as follows:
+```
+Algorithm Branch_and_Bound():
+    Input: Graph G = (V, E) with vertex weights
+    Output: A minimum-cost balanced bisection of G
+
+    1. Initialize priority queue Q with the root node (initial partial solution)
+    2. Set initial upper bound U to infinity
+
+    while Q is not empty:
+        3. Extract node N from Q with the lowest bound
+        4. If the bound of N >= U:
+            5. Continue to next iteration (Prune this node)
+        6. If N represents a complete solution:
+            7. If cost(N) < U:
+                8. Update U = cost(N)
+                9. Continue to next iteration
+        10. Else:
+            11. Branch N into new nodes based on possible next steps
+            12. For each new node M:
+                13. Calculate lower bound of M
+                14. If lower bound of M < U:
+                    15. Add M to Q
+    16. Return the solution corresponding to U
+```
+
+### Pruning Conditions
+Pruning in Branch and Bound algorithms involves skipping the exploration of certain branches of the search tree. This happens under the following conditions:
+1. **Bound Comparison**: If the lower bound of a node is greater than or equal to the best solution found so far (upper bound U), there's no need to explore this node further because it cannot possibly lead to a better solution.
+2. **Feasibility**: If a node or its development violates problem constraints or conditions for optimality, it is pruned.
