@@ -116,6 +116,7 @@ $$
 You can test before (0) and during the loop and this invariant always holds true.
 
 As another example, Let's say we want to count how many times the integer `x` appears in an array `arr`. The code is as follows:
+
 ```python
 def count_occurrences(arr, x):
     count = 0
@@ -124,12 +125,15 @@ def count_occurrences(arr, x):
             count += 1
     return count
 ```
+
 The Invariant could be written as,
-$$
-count = \sum_{k=0}^{i-1} f(arr[k], x)
 
 $$
+count = \sum_{k=0}^{i-1} f(arr[k], x)
+$$
+
 where `f(arr[k], x)` is considered as:
+
 $$
 f(arr[k], x) = 
   \begin{cases} 
@@ -137,6 +141,7 @@ f(arr[k], x) =
     0 & \text{otherwise}
   \end{cases}
 $$
+
 Lets explain this. To start, the function returns 
 `1` if the element at position `𝑘` in the array `arr` equals `𝑥`, and `0` otherwise. 
 
@@ -886,7 +891,7 @@ Unsure if you will have learned this. Or if you learned what NP-Hard means. Belo
    - **Goal**: Explain what it means if `P = NP`.
    - **Proof Method**: Hypothetical Implication and Proof by Contradiction.
    - **Steps**:
-     1. **Assume  `P = NP`: If `P = NP`, then every problem whose solution can be verified in polynomial time can also be solved in polynomial time.
+     1. **Assume  `P = NP`: If `P = NP`**, then every problem whose solution can be verified in polynomial time can also be solved in polynomial time.
      2. **Implication for NPC**: Since NPC problems are the hardest problems in NP, and they would all fall into P, every NP problem becomes solvable in polynomial time, which would collapse the NP and NPC classes into P.
      3. **Challenge Existing Systems**: This would impact numerous fields, particularly cryptography, where the security of many systems relies on certain problems not being efficiently solvable.
      4. **Contradiction Exploration**: If one were to prove `P ≠  NP`, many current cryptographic methods remain secure, but proving ` P = NP ` would require reconstructing many foundational aspects of computer security. (unlikely to be asked.)
