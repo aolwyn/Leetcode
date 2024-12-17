@@ -619,4 +619,79 @@ Use case includes road network distances and communication network diameter, mea
 
 In theory, you could use repeated single-source algorithms but specialized all-pairs algorithms aim for better efficiency.
 
+**Edge-Weight Matrix (W)**: A matrix representation of the graph where each element `w_{ij}` represents the weight of the edge from vertex `i` to vertex ` j `. If there is no edge, ` w_{ij} ` is typically set to infinity (`∞`).
+
+**Predecessor Matrix (Π)**: A matrix where each element `π_{ij}` points to the predecessor of vertex `j` on the shortest path from vertex `i`. If no path exists, `π_{ij}` is set to nil.
+
+### Matrix Multiplication-Based Approach
+This method uses a matrix multiplication technique to compute the shortest path lengths by repeatedly squaring the adjacency matrix. (uses dynamic programming)
+
+Use case: Efficient for dense graphs where edge connections are rich and matrix multiplication computational overhead is justified. (remember, matrix mult has high overhead!)
+
+Pseudocode:
+  ```
+  MATRIX-MULTIPLICATION-SHORTEST-PATHS(W):
+    L = W
+    for m from 2 to n
+      L = EXTEND-SHORTEST-PATHS(L, W)
+    return L
+```
+
+### Floyd-Warshall Algorithm
+The Floyd-Warshall algorithm is a dynamic programming solution that computes shortest paths between all pairs of vertices in `O(n^3)` time using only space for two matrices (a series of "intermediate" vertices).
+
+Utilizes the property that a shortest path from 
+`𝑖` to `𝑗`using only vertices among `{1, ..., k}` as intermediate points can be found by considering all possible paths through the k-th vertex.
+
+Particularly useful for computing paths in dense graphs or when retrieving the shortest path details is as important as determining the shortest path length.
+
+Pseudocode:
+```
+  FLOYD-WARSHALL(W):
+    let D = W                    // Initialize the distance matrix with edge weights
+    for k from 1 to n:           // Intermediate vertices
+      for i from 1 to n:         // Start vertex
+        for j from 1 to n:       // End vertex
+          D[i][j] = min(D[i][j], D[i][k] + D[k][j])  // Update distance
+    return D
+```
+
+Technically, the algorithm can also be applied to single source but its highly unlikely. It can technically return a row or column corresponding to a single source, this method doesn't capitalize on the algorithm's strengths and is less efficient compared to using Dijkstra’s or Bellman-Ford algorithm for single-source shortest paths. This adaptation doesn't provide computational or conceptual advantages over these other algorithms in a single-source scenario. If you're interested, its here:
+```
+FLOYD-WARSHALL(G, w, s):
+  D = matrix of edge weights w        // Initialize the distance matrix with edge weights
+  for k from 1 to |G.V|:              // Intermediate vertices considered
+    for i from 1 to |G.V|:
+      for j from 1 to |G.V|:
+        D[i][j] = min(D[i][j], D[i][k] + D[k][j]) // Update the distance matrix by considering intermediate vertices
+  return D[s]                         // Return the row of the distance matrix corresponding to the source vertex
+```
+
+### Transitive Closure
+
+The transitive closure of a graph indicates whether there is a direct or indirect path between each pair of vertices. It helps determine the reachability of vertices from one another within a graph.
+
+Transitive closure is used in various fields such as database query optimization, network analysis, and access control systems to determine connectivity and access possibilities between nodes or data points.
+
+#### Floyd-Warshall Algorithm Adapted for Transitive Closure
+While the Floyd-Warshall algorithm is traditionally used for finding shortest paths, it can be adapted to compute the transitive closure of a graph, providing a binary output (true/false) that indicates whether a path exists between each pair of vertices.
+
+**Pseudocode**:
+```plaintext
+  TRANSITIVE-CLOSURE(W):
+    let T = (W != ∞)             // Initialize the transitive closure matrix T, setting T[i][j] to true if there is a direct edge from i to j
+    for k from 1 to n:           // Consider each vertex k as an intermediate point
+      for i from 1 to n:         // For each vertex i
+        for j from 1 to n:       // And each vertex j
+          T[i][j] = T[i][j] or (T[i][k] and T[k][j])  // Update T[i][j] to reflect whether a path exists through vertex k
+    return T
+```
+
+This adaptation of the Floyd-Warshall algorithm modifies the way the algorithm's main operation is performed. Instead of calculating minimum distances, it evaluates logical `OR` and `AND` operations to determine connectivity.
+
+The initialization step sets each `T[i][j]` to true if there is a direct edge between `𝑖` and `𝑗` (i.e., the distance is not infinity). 
+
+The algorithm iteratively updates the matrix 
+`𝑇` to include indirect paths through intermediate vertices. If there is any path from `𝑖` to `𝑗` passing through 
+`𝑘`, then `𝑇[𝑖][𝑗]` is set to true.
 
