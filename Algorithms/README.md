@@ -115,6 +115,38 @@ $$
 
 You can test before (0) and during the loop and this invariant always holds true.
 
+As another example, Let's say we want to count how many times the integer `x` appears in an array `arr`. The code is as follows:
+```python
+def count_occurrences(arr, x):
+    count = 0
+    for i in range(len(arr)):
+        if arr[i] == x:
+            count += 1
+    return count
+```
+The Invariant could be written as,
+$$
+count = \sum_{k=0}^{i-1} f(arr[k], x)
+
+$$
+where `f(arr[k], x)` is considered as:
+$$
+f(arr[k], x) = 
+  \begin{cases} 
+    1 & \text{if } arr[k] = x \\
+    0 & \text{otherwise}
+  \end{cases}
+$$
+Lets explain this. To start, the function returns 
+`1` if the element at position `𝑘` in the array `arr` equals `𝑥`, and `0` otherwise. 
+
+Now to prove the Invariant Properties:
+
+- **Initialization**: At the start (before the first iteration, when `i = 0`), the summation is over an empty set, which correctly initializes `count = 0`.
+
+- **Maintenance**: On each iteration, if `arr[i] = x`, the function `f(arr[i], x)` contributes `1` to the sum, updating the `count` to include the current element. This maintains the correctness of the `count` through each iteration.
+
+- **Termination**: At the end of the loop, the condition `i = len(arr)` ensures that `count` represents the sum of `f(arr[k], x)` for every `k` from `0` to `len(arr)-1`, which is the total occurrences of `x` in `arr`.
 </p>
 
 <h2>Pseudocode</h2>
