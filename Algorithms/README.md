@@ -458,3 +458,60 @@ Graph Types Without SCC: Directed acyclic graphs (DAGs) do not have strongly con
   2. Compute the transpose of the graph.
   3. Perform DFS on the transposed graph in the order of decreasing finish times from the first DFS.
 - **Running Time**:  `Θ(V + E)` for both DFS executions and the graph transpose, making it highly efficient.
+
+## Minimum Spanning Trees (MST)
+A **Minimum Spanning Tree (MST)** of a weighted, connected, undirected graph is a spanning tree with the minimum possible total edge weight. A spanning tree is a subset of the graph's edges that forms a tree including every vertex and has no cycles.
+
+They are used in scenarios like connecting different components in engineering projects (e.g., circuit board wiring) with the least material cost.
+
+**Goal**: To connect all vertices in a graph with the minimum total edge weight without any cycles, forming a spanning tree.
+
+There are 2 algorithms to compute / create a MST.
+
+### Kruskal's Algorithm
+**Approach**: Build the MST by adding the next lightest edge that doesn't produce a cycle, typically managed with a disjoint-set data structure.
+
+Use Cases: Network design, clustering, and determining pathways with minimal cost.
+
+**Pseudocode**:
+  ```plaintext
+  KRUSKAL(G):
+    A = ∅
+    for each vertex v in G.V:
+      MAKE-SET(v)
+    sort the edges of G.E into nondecreasing order by weight w
+    for each edge (u, v) in G.E, taken in sorted order:
+      if FIND-SET(u) ≠ FIND-SET(v):
+        A = A ∪ {(u, v)}
+        UNION(u, v)
+    return A
+```
+
+### Prim's Algorithm
+**Approach**: Start from an arbitrary vertex and grow the MST by adding the cheapest possible connection from the tree to another vertex.
+
+Use Cases: Similar to Kruskal's, used in network design and infrastructure planning where cost minimization is crucial.
+
+**Pseudocode**:
+```
+PRIM(G, r): // r is start vertex
+  for each u in G.V:
+    u.key = ∞
+    u.parent = NIL
+  r.key = 0
+  Q = G.V
+  while Q is not empty:
+    u = EXTRACT-MIN(Q)
+    for each v in G.Adj[u]:
+      if v in Q and w(u, v) < v.key:
+        v.parent = u
+        v.key = w(u, v)
+  return G.V
+```
+
+### Theoretical and Practical Considerations for MSTs
+- Graph Cuts and Light Edges: A cut in a graph divides the vertices into two disjoint subsets. A light edge crosses the cut and is the minimum weight edge from any of those in the cut.
+- Asymptotic Complexity: Both algorithms can achieve 
+`𝑂(𝐸log𝑉)`
+ with efficient priority queue structures, making them suitable for large graphs.
+
