@@ -150,7 +150,7 @@ Now to prove the Invariant Properties:
 </p>
 
 <h2>Pseudocode</h2>
-<p>code, but make it english (basically). <br>Example:</p>
+<p>Code, but make it English (basically). <br>Example:</p>
 
 ```
 FUNCTION FindMaximum(A, n)
