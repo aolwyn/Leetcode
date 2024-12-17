@@ -1,6 +1,6 @@
 <h1> Algorithms </h1>
 
-<p> To you, the reader - a quick <strong>disclaimer</strong>. I <u>do not claim to cover all material that you may have taught</u>. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
+<p> To you, the reader - a quick <strong>disclaimer</strong>. I <u>do not claim to cover all material that you may have taught</u>. I simply summarize here what is taught in the majority of textbooks, from my hand written notes, and from when I took the class in undergrad. I <u>specifically leave out mathematical concepts</u> (i.e., matrix mult.) as they are simply not worth my time to write out in markdown format. You are still responsible for learning this. If there is material you'd like specifically covered, please don't hesistate to reach out. </p>
 
 <p><strong>P.S. - would check out the README in the Java folder if you'd like a recap on data structures + some algorithms. There is also visualizations and graphics in that file.</strong></p>
 
@@ -695,3 +695,95 @@ The algorithm iteratively updates the matrix
 `𝑇` to include indirect paths through intermediate vertices. If there is any path from `𝑖` to `𝑗` passing through 
 `𝑘`, then `𝑇[𝑖][𝑗]` is set to true.
 
+## P, NP, NPC Completeness
+
+### Overview and Key Questions
+- **Essential Open Question**: The most critical open question in theoretical computer science is whether **P = NP**. This query explores if every problem whose solution can be verified in polynomial time (`NP`) can also be solved in polynomial time (`P`).
+
+### Definitions and Relationships Among Complexity Classes
+- **Class `P`**: Comprises problems that can be solved deterministically in polynomial time.
+- **Class `NP`**: Includes problems for which a solution can be verified in polynomial time by a nondeterministic algorithm.
+- **NP-Complete (`NPC`)**: These are the hardest problems in NP. A problem is NP-Complete if:
+  1. It is in `NP`.
+  2. Every problem in `NP` can be polynomial-time reduced to it (NP-hardness).
+
+### Verification Algorithm Inputs
+- **Input Components**: A verification algorithm for an NP problem receives two inputs:
+  1. **Certificate (Solution)**: A candidate solution to the problem.
+  2. **Problem Instance**: The specific data or parameters that define an instance of the problem.
+
+### Purpose of Reduction Algorithms
+
+Reduction algorithms prove theoretical properties but also guide practical algorithm development. 
+
+- **Functionality**: Reduction algorithms are used to transform one problem into another in polynomial time. They are critical for proving NP-completeness by demonstrating that a solution to a newly formulated problem implies a solution to a known NP-complete problem.
+- **Application in Proofs**: These algorithms help establish that if a newly defined problem can be solved in polynomial time, then so can the original NP-complete problem, thereby extending the class `P` if `P = NP` is true.
+
+### Relationships and Practical Implications
+**Diagrammatic Representation**
+  ```plaintext
+  P ⊆ NP
+  NPC ⊆ NP
+  If P = NP, then P = NP = NPC.
+  If P ≠ NP, then NPC problems are not solvable in polynomial time.
+  ```
+While the majority of computer scientists conjecture that `P ≠ NP`, proving this remains elusive. This belief underpins the importance of seeking efficient algorithms for NP problems, or at least less optimal or approximate solutions.
+
+### Complexity Classes and Their Importance
+Understanding these classes aids in identifying which computational problems are feasible to solve as technology evolves. Problems in `P` are considered tractable, while those in `NPC` are tackled with heuristic or approximate methods due to their presumed intractability.
+
+## P, NP, NPC Proofs
+Unsure if you will have learned this. Or if you learned what NP-Hard means. Below will be an `in the event of...`
+
+### Proving a problem is in NP
+ **Proof Strategy**: Direct explanation or constructive proof.
+- **Details**:
+  - **Objective**: Demonstrate that a given solution to the problem can be verified in polynomial time.
+  - **Approach**: Provide a clear description or pseudocode of a polynomial-time verification algorithm.
+
+### Proving a problem is NP-Complete
+**Proof Strategy**: Proof by Reduction (Constructive proof).
+- **Details**:
+  - **NP Membership**: Show the problem is in NP by describing a polynomial-time verifier.
+  - **NP-Hardness**: Employ a reduction from a known NP-Complete problem.
+    - Construct a polynomial-time transformation of instances.
+    - Ensure solutions map correctly between the reduced and original problems.
+    - Use logical arguments or, occasionally, proof by induction for recursive structures.
+
+### Reduction algorithms
+**Proof Strategy**: Proof by Construction.
+- **Details**:
+  - **Constructing the Reduction**: Design a polynomial-time algorithm that transforms one problem into another.
+  - **Proving the Reduction Works**: Use logical arguments to show that the reduction maintains the essential properties of problems. Proof by induction might be relevant for iterative modifications.
+
+### Using the Classes P, NP, and NPC in Proofs
+**Proof Strategy**: Logical deduction and class comparison.
+- **Details**:
+  - **Complexity Class Relationships**: Utilize known relationships like `P ⊆ NP`.
+  - **Implications of Theoretical Results**: Use proof by contradiction to explore implications of potential proofs that `P = NP` or `P ≠ NP`.
+
+###  Complexity Class Containment
+1. **Proof for `P ⊆ NP`**
+   - **Goal**: Show that every problem in `P` is also in `NP`.
+   - **Proof Method**: Direct Proof.
+   - **Steps**:
+     1. **Definition Recall**: Remember, a problem is in `P` if there is a deterministic polynomial-time algorithm that solves it. A problem is in `NP` if a solution can be verified in polynomial time by a deterministic Turing machine.
+     2. **Logical Argument**: If a problem can be solved in polynomial time, then any solution can be verified in no more time than it takes to solve it. Specifically, the verifier can simply ignore the provided solution, run the polynomial-time solver, and check if the output matches the given solution.
+     3. **Conclusion**: Since every solver can be trivially converted into a verifier by solving the problem afresh and comparing the solution to the given one, every problem in P can be verified in polynomial time, hence `P ⊆ NP`.
+
+2. **Proof for NPC ⊆ NP**
+   - **Goal**: Demonstrate that all NP-Complete problems are within NP.
+   - **Proof Method**: Definition and Logical Argument.
+   - **Steps**:
+     1. **Definition Recall**: NP-Complete problems are those problems to which every problem in NP can be reduced in polynomial time and which are themselves in `NP`.
+     2. **Implication Understanding**: By definition, a problem must already be in `NP` to be considered for NP-completeness.
+     3. **Conclusion**: Since being in NP is a prerequisite for being NP-Complete, it follows directly from the definition that `NPC ⊆ NP`.
+
+3. **Demonstrating the Significance of ` P = NP `**
+   - **Goal**: Explain what it means if `P = NP`.
+   - **Proof Method**: Hypothetical Implication and Proof by Contradiction.
+   - **Steps**:
+     1. **Assume  `P = NP`: If `P = NP`, then every problem whose solution can be verified in polynomial time can also be solved in polynomial time.
+     2. **Implication for NPC**: Since NPC problems are the hardest problems in NP, and they would all fall into P, every NP problem becomes solvable in polynomial time, which would collapse the NP and NPC classes into P.
+     3. **Challenge Existing Systems**: This would impact numerous fields, particularly cryptography, where the security of many systems relies on certain problems not being efficiently solvable.
+     4. **Contradiction Exploration**: If one were to prove `P ≠  NP`, many current cryptographic methods remain secure, but proving ` P = NP ` would require reconstructing many foundational aspects of computer security. (unlikely to be asked.)
