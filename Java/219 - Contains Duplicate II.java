@@ -1,19 +1,25 @@
 class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         /*Algorithm:
-        - we will use a sliding window with a hash map --> value : last occurrence.
-        if the values exist within k range, we return true. otherwise, false.
+        - we are given an array. we want to find 2 indices i and j s.t. nums[i] is same as nums[j]
+        - second condition is that j - i must be less than or equal to k.
+        - considerations:
+            - use a hash map for value --> index. 
+            - if value present, check if index subtraction less than k - if not, put new index in.
         */
-        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for(int i =0; i < nums.length; i++){
-            if(!map.containsKey(nums[i]))
-                map.put(nums[i],i);
-            
-            else if(Math.abs(map.get(nums[i]) - i) <= k)
-                return true;
-            
-            else{
+        HashMap<Integer, Integer> map = new HashMap<>();
+        if(nums == null)
+            return false;
+
+        for(int i = 0; i < nums.length; i++) {
+            if(map.containsKey(nums[i])){ 
+                int temp = map.get(nums[i]);
+                if(i - temp <= k) {
+                    return true;
+                }
+                map.put(nums[i],i); 
+            }else {
                 map.put(nums[i],i);
             }
         }
