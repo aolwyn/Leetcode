@@ -1,3 +1,3 @@
 SELECT name
-FROM CUSTOMER
-WHERE ifnull(referee_id, 0) != 2
+FROM Customer
+WHERE referee_id !=2 or referee_id IS NULL
