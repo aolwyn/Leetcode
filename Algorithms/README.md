@@ -895,8 +895,8 @@ Unsure if you will have learned this. Or if you learned what NP-Hard means. Belo
   - **Implications of Theoretical Results**: Use proof by contradiction to explore implications of potential proofs that `P = NP` or `P ≠ NP`.
 
 ### "Formal" NPC NP-Completeness Requirements
-For language \( L \subseteq \{0,1\}^* \):
-1. \( L \in\) <u>NP</u>  
+For language  `L_{0,1\}^{*} `:
+1. L (is in) <u>NP</u>  
 2. <u>L′ ≤p L for every L′ ∈ NP</u>
 
 **Proof Strategy**: Logical deduction and class comparison.
