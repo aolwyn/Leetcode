@@ -849,6 +849,10 @@ Unsure if you will have learned this. Or if you learned what NP-Hard means. Belo
   - **Objective**: Demonstrate that a given solution to the problem can be verified in polynomial time.
   - **Approach**: Provide a clear description or pseudocode of a polynomial-time verification algorithm.
 
+#### Converting of Optimization Problems
+- Convert to a decision problem  
+- Permits easier reasoning because output is either <u>0 or 1</u>
+
 ### Proving a problem is NP-Complete
 **Proof Strategy**: Proof by Reduction (Constructive proof).
 - **Details**:
@@ -858,17 +862,48 @@ Unsure if you will have learned this. Or if you learned what NP-Hard means. Belo
     - Ensure solutions map correctly between the reduced and original problems.
     - Use logical arguments or, occasionally, proof by induction for recursive structures.
 
+### Language definition for (NP/NPC framework)
+- A language is a <u>set of strings</u> built over an alphabet  
+- For the NPC framework, it is <u>a set of strings accepted by an algorithm</u> (output decision algorithm is a <u>1</u>)
+
 ### Reduction algorithms
 **Proof Strategy**: Proof by Construction.
 - **Details**:
   - **Constructing the Reduction**: Design a polynomial-time algorithm that transforms one problem into another.
   - **Proving the Reduction Works**: Use logical arguments to show that the reduction maintains the essential properties of problems. Proof by induction might be relevant for iterative modifications.
+ 
+#### Purpose of Reduction Algorithms
+- A reduction transforms/recasts one language (problem) to another  
+- Useful to apply from known NPC problem to new presumed NPC problem  
+- A reduction to transform <u>binary encoding</u> from source language to destination language must be computable in <u>polynomial time</u>
+
+### Input to a Verification Algorithm
+- <u>binary encoding of problem instance</u>  
+- <u>binary encoding of solution certificate</u>
+
+### Proving CIRCUIT-SAT as the base NPC Problem
+- First show that a <u>polynomial-time verification algorithm exists</u> (CIRCUIT-SAT ∈ NP)  
+- Then show all other languages in NP are polynomial-time reducible to CIRCUIT-SAT by converting verification algorithms for those other languages to a <u>large combinational logic circuit</u>  
+  - (Verification algorithm is a <u>1 → 1 comb. logic. circuit</u>, circuit output is <u>1</u>)
+
+
 
 ### Using the Classes P, NP, and NPC in Proofs
 **Proof Strategy**: Logical deduction and class comparison.
 - **Details**:
   - **Complexity Class Relationships**: Utilize known relationships like `P ⊆ NP`.
   - **Implications of Theoretical Results**: Use proof by contradiction to explore implications of potential proofs that `P = NP` or `P ≠ NP`.
+
+### "Formal" NPC NP-Completeness Requirements
+For language \( L \subseteq \{0,1\}^* \):
+1. \( L \in\) <u>NP</u>  
+2. <u>L′ ≤p L for every L′ ∈ NP</u>
+
+**Proof Strategy**: Logical deduction and class comparison.
+- **Details**:
+  - **Complexity Class Relationships**: Utilize known relationships like `P ⊆ NP`.
+  - **Implications of Theoretical Results**: Use proof by contradiction to explore implications of potential proofs that `P = NP` or `P ≠ NP`.
+
 
 ###  Complexity Class Containment
 1. **Proof for `P ⊆ NP`**
