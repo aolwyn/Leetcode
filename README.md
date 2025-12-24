@@ -1,3 +1,3 @@
 # Leetcode and Coding Notes
-Leetcode solutions for Java, Pandas, and some SQL. Includes Notes in each respective folder.
+While this folder originally started as my solutions for some notable leetcode practice problems, it became my house for various notes that I'd written during my time running workshops, studying, or being a teaching assistant.
 
