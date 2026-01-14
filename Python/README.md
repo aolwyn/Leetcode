@@ -1,6 +1,8 @@
 # NOTES!
 THe python equivalent of the `./java/README.md` file
 
+[🐍 Python Notes](./python_DSA.md)
+
 Notes taken from across the internet rec visiting: https://github.com/kdn251/interviews/ 
 
 
