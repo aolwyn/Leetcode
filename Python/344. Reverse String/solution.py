@@ -13,4 +13,4 @@ class Solution:
             left +=1
             right-=1
 
-        
+         # s.reverse() #<-- easier version.
