@@ -266,17 +266,3 @@ for neighbor in graph[0]:
     print(neighbor)
 
 ```
-
----
-
-## Summary of Big-O Complexities
-
-| Data Structure | Access | Search | Insertion | Deletion |
-| --- | --- | --- | --- | --- |
-| **List (Array)** |  |  |  |  |
-| **Stack** |  |  |  |  |
-| **Queue (Deque)** |  |  |  |  |
-| **HashMap / Set** | N/A |  |  |  |
-| **Heap (Min)** |  (Min) |  |  |  |
-
-**Insertion/Deletion for List is  only at the END (`append`/`pop`).*
